@@ -3,13 +3,7 @@
     <div class="breadcrumb-wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcumb">
-                        <a href="/">Trang chủ</a>
-                        <span class="breadcumb-icon mx-1"><i class="fa-solid fa-angles-right"></i></span>
-                        <span>Lịch sử nạp tiền</span>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>

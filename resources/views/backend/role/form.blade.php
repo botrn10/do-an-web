@@ -23,18 +23,6 @@
         @error('guard_name')
             <small id="emailHelp" class="form-text text-danger">{{ $errors->first('guard_name') }}</small>
         @enderror
-    </div>
-    <div class="row">
-        @foreach($permissions ?? [] as $item)
-            <div class="form-group form-check col-sm-3">
-                <div class="form-group form-check">
-                    <label class="form-check-label" style="display: flex;justify-content: space-between" for="exampleCheck1">
-                        <span>{{ $item->description }}</span>
-                        <input type="checkbox" class="form-check-input" {{ in_array($item->id, $permissionActive) ? "checked" : "" }}  value="{{ $item->id }}" name="permissions[]">
-                    </label>
-                </div>
-            </div>
-        @endforeach
-    </div>
+   
     <button type="submit" class="btn btn-primary">Lưu dữ liệu</button>
 </form>

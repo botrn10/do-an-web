@@ -108,20 +108,8 @@
                                 Slide
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::segment(2) == 'permission' ? 'active' : '' }}"
-                                href="{{ route('get_admin.permission.index') }}">
-                                <span data-feather="codepen"></span>
-                                Phân quyền
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::segment(2) == 'role' ? 'active' : '' }}"
-                                href="{{ route('get_admin.role.index') }}">
-                                <span data-feather="codesandbox"></span>
-                                Vai trò
-                            </a>
-                        </li>
+                      
+                    
                         <li class="nav-item">
                             <a class="nav-link {{ Request::segment(2) == 'transaction' ? 'active' : '' }}"
                                 href="{{ route('get_admin.transaction.index') }}">
@@ -129,13 +117,7 @@
                                 Đơn hàng
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::segment(2) == 'recharge' ? 'active' : '' }}"
-                                href="{{ route('get_admin.recharge.index') }}">
-                                <span data-feather="menu"></span>
-                                Danh sách nạp tiền
-                            </a>
-                        </li>
+                      
                     </ul>
                 </div>
             </nav>

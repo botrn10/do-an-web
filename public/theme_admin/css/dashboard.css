@@ -43,7 +43,7 @@ body {
 }
 
 .sidebar .nav-link.active {
-  color: #007bff;
+  color: #006666;
 }
 
 .sidebar .nav-link:hover .feather,
@@ -148,5 +148,5 @@ body {
 }
 
 .active-icon {
-  color: blue;
+  color: #006666;
 }

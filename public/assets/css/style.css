@@ -11,8 +11,8 @@
     --color-star: #C0C0C0;
     --color-divider: #e8e8e8;
     --bg-title-manage: #F5F5F5;
-    --color-btn: #FF8800;
-    --color-hover-btn: #E56700;
+    --color-btn: #0c9f9f;
+    --color-hover-btn: #0a8888;
     --bg-body: #F4F4F4;
 }
 
@@ -330,7 +330,7 @@ table {
     border: none;
     outline: none;
     /* background-color: var(--color-btn); */
-    background-color: #1f7ed0;
+    background-color: #006666;
     color: white;
     padding: 2px 18px;
     border-radius: 4px;
@@ -339,13 +339,13 @@ table {
 
 .btn-create{
     color: white;
-    background-color: #1f7ed0;
+    background-color: #006666    ;
     border-radius: 4px;
     cursor: pointer;
 }
 .btn-create:hover{
     /* background-color: var(--color-hover-btn); */
-    background-color: #acd8f2;
+    background-color: #0cafaf;
 }
 
 .btn-create-text{
@@ -416,7 +416,7 @@ table {
 }
 
 .sub-menu-slider-link:hover span{
-    color: #598dc5;
+    color: #0a8888;
 }
 
 .sub-menu-slider-new{
@@ -596,7 +596,7 @@ table {
 }
 
 .product-title h3:hover a{
-    color: #598dc5;
+    color: #0a8888;
 }
 
 .product-price{
@@ -671,7 +671,8 @@ table {
 }
 
 .wrapper_footer{
-    background-color: #1f7ed0;
+    background-color: #006666
+    ;
 }
 
 .title-footer{
@@ -1565,11 +1566,11 @@ input[type="range"]::-moz-range-thumb{
 }
 
 .button-call:hover{
-    background-color: #1f7ed0;
+    background-color: #0a8888;
 }
 .button-chat:hover{
     background-color: #e6e6e6;
-    color: #1f7ed0;
+    color: #0a8888;
 }
 
 .lead-button-mobile{
@@ -1619,7 +1620,7 @@ input[type="range"]::-moz-range-thumb{
     font-weight: 400;
     align-items: center;
     color: #fff;
-    background-color: #33a837;
+    background-color: #006666;
     width: 50%;
     padding: 6px 12px;
 
@@ -1632,7 +1633,7 @@ input[type="range"]::-moz-range-thumb{
   }
 
   .btn-user:hover {
-    background-color: #acd8f2;
+    background-color: #0e9292;
   }
 
   /* Notification */

@@ -1,17 +1,17 @@
-<header class="wrapper_header">
+<header class="wrapper_header" style="background-color: #fd7e14">
     <div class="menu-header">
 
-        <div class="container">
+        <div class="container" >
             <div class="row">
                 <div class="col-lg-2 d-flex align-items-center justify-content-center justify-content-md-start">
                     <div class="header-logo">
                         <a href="/">
-                            <img src="{{ asset('assets/img/stu2hand_logo.png') }}" alt="" width="100%"
+                            <img src="{{ asset('assets\img\logoMYUEH.png') }}" alt="" width="100%"
                                 height="45px">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-10 d-none d-md-block">
+                <div class="col-lg-10 d-none d-md-block" >
                     <nav class="nav-header h-100">
                         <ul class="list-menu d-flex justify-content-end h-100 align-items-center">
                             {{-- Nofitications start --}}
@@ -62,17 +62,11 @@
                                             </div>
                                             <div class="user-info">
                                                 <h3 class="user-name">
-                                                    <a href="#">Stu2hand</a>
+                                                    <a href="#">Website</a>
                                                 </h3>
                                             </div>
                                         </div>
-                                        <div>
-                                            <span class="product-info-user-main-icon"><i
-                                                    class="fa-solid fa-money-bill"></i></span>
-                                            <span>Tổng tiền:
-                                                {{ number_format(Auth::user()->total_money ?? 0, 0, ',', '.') }}
-                                                VNĐ</span>
-                                        </div>
+                                      
                                     </div>
                                     <div class="profile-bottom d-flex flex-column">
                                         <ul class="list-manage">
@@ -125,27 +119,11 @@
                                                             alt="Thêm mới" class="img-manage" width="24px"
                                                             height="24px"
                                                             style="object-fit: contain; margin-right: 12px;">
-                                                        <span>Danh sách yêu thích</span>
+                                                        <span>Danh sách Giỏ hàng</span>
                                                     </a>
                                                 </li>
-                                                <li class="item-manage">
-                                                    <a href="{{route("get.index.recharge")}}"
-                                                        class="link-manage d-flex align-items-center">
-                                                        <img src="{{ asset('images/recharge.svg') }}" alt="Thêm mới"
-                                                            class="img-manage" width="24px" height="24px"
-                                                            style="object-fit: contain; margin-right: 12px;">
-                                                        <span>Nạp tiền</span>
-                                                    </a>
-                                                </li>
-                                                <li class="item-manage">
-                                                    <a href="{{ route('get.index.rechargeOfUser') }}"
-                                                        class="link-manage d-flex align-items-center">
-                                                        <img src="{{ asset('images/recharge.svg') }}" alt="Thêm mới"
-                                                            class="img-manage" width="24px" height="24px"
-                                                            style="object-fit: contain; margin-right: 12px;">
-                                                        <span>Lịch sử nạp tiền</span>
-                                                    </a>
-                                                </li>
+                                           
+                                              
                                                 <h3 class="title-manage">
                                                     Thông tin cá nhân
                                                 </h3>
@@ -193,21 +171,21 @@
             </div>
         </div>
     </div>
-    <div class="search-header">
+    <div class="search-header" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="search-item position-relative d-flex">
                         <form style="width: 100%" action="{{ route('get.search') }}">
                             <input type="text" name="k" value="{{ Request::get('k') }}"
-                                placeholder="Tìm kiếm trên Stu2hand" style="width: 100%">
+                                placeholder="Tìm kiếm trên Website" style="width: 100%">
                             <button class="position-absolute btn-search btn-user">
                                 <span><i class="fa-solid fa-magnifying-glass"></i></span>
                             </button>
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-4 d-none d-md-block">
+                <div class="col-lg-4 d-none d-md-block" >
                     <div class="create-news d-flex h-100">
                         @if (Auth::check())
                             <a target="_blank" href="{{ route('view_chat', Auth::user()->id) }}"
@@ -236,9 +214,9 @@
                             class="btn-create w-100 d-flex align-items-center justify-content-center">
                             <span
                                 class="btn-create-icon btn-create w-100 d-flex align-items-center justify-content-center"><span
-                                    class="btn-create-text ml-2">Yêu thích </span> <span
+                                    class="btn-create-text ml-2">Giỏ hàng </span> <span
                                     class="btn-create-text ml-2"><i data-count="{{ \Cart::count() }}"
-                                        class=" notification-icon fa-solid fa-heart"></i>
+                                        class=" notification-icon fa-solid "></i>
                                 </span>
                         </a>
                     </div>

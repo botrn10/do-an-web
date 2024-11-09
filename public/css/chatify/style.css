@@ -138,9 +138,9 @@ body {
 .messenger-messagingView .m-body {
   position: relative;
   padding-top: 15px;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: auto;
-  height: 90%;
+  height: 100%;
 }
 .m-header {
   font-weight: 600;
@@ -761,7 +761,7 @@ body {
 }
 .app-btn:hover,
 .app-btn:focus {
-  color: rgb(33, 128, 243);
+  color:#117d7d;
   outline: none;
   text-decoration: none;
 }
@@ -778,12 +778,12 @@ body {
   background: #e4e4e4;
 }
 .a-btn-primary {
-  background: #0976d6;
+  background: #006666;
   color: #fff;
 }
 .a-btn-primary:hover,
 .a-btn-primary:focus {
-  background: #0085ef;
+  background: #0b8080;
   color: #fff;
 }
 .a-btn-warning {
@@ -796,12 +796,12 @@ body {
   color: #fff;
 }
 .a-btn-success {
-  background: #1e8a53 !important;
+  background: #006666 !important;
   color: #fff;
 }
 .a-btn-success:hover,
 .a-btn-success:focus {
-  background: #2ecc71 !important;
+  background: #097b7b  !important;
   color: #fff;
 }
 .a-btn-danger {

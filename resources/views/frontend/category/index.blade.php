@@ -12,7 +12,7 @@
                     {{-- <span>Xe máy</span> --}}
                 </div>
                 <h3 class="title">
-                    Khám phá danh mục: {{ $category->name }}
+                    Danh mục sản phẩm: {{ $category->name }}
                 </h3>
             </div>
         </div>

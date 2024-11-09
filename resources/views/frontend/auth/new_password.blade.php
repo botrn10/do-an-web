@@ -8,7 +8,7 @@
                 <div class="breadcumb">
                     <a href="#">Tài khoản</a>
                     <span class="breadcumb-icon mx-1"><i class="fa-solid fa-angles-right"></i></span>
-                    <span>Quên mật khẩu</span>
+               
                 </div>
             </div>
         </div>

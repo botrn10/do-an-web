@@ -8,11 +8,11 @@
   <div class="app-modal" data-name="delete">
       <div class="app-modal-container">
           <div class="app-modal-card" data-name="delete" data-modal='0'>
-              <div class="app-modal-header">Bạn có muốn xóa cuộc trò chuyện?</div>
-              <div class="app-modal-body">Bạn không thể khôi phục dữ liệu</div>
+              <div class="app-modal-header">Are you sure you want to delete this?</div>
+              <div class="app-modal-body">You can not undo this action</div>
               <div class="app-modal-footer">
-                  <a href="javascript:void(0)" class="app-btn cancel">Hủy bỏ</a>
-                  <a href="javascript:void(0)" class="app-btn a-btn-danger delete">Xóa</a>
+                  <a href="javascript:void(0)" class="app-btn cancel">Cancel</a>
+                  <a href="javascript:void(0)" class="app-btn a-btn-danger delete">Delete</a>
               </div>
           </div>
       </div>
@@ -38,17 +38,14 @@
                   {{-- <div class="app-modal-header">Update your profile settings</div> --}}
                   <div class="app-modal-body">
                       {{-- Udate profile avatar --}}
-
-                      {{-- Tắt cập nhật avatar --}}
-                      {{-- <div class="avatar av-l upload-avatar-preview chatify-d-flex"
+                      <div class="avatar av-l upload-avatar-preview chatify-d-flex"
                       style="background-image: url('{{ Chatify::getUserWithAvatar(Auth::user())->avatar }}');"
                       ></div>
                       <p class="upload-avatar-details"></p>
                       <label class="app-btn a-btn-primary update" style="background-color:{{$messengerColor}}">
                           Upload New
                           <input class="upload-avatar chatify-d-none" accept="image/*" name="avatar" type="file" />
-                      </label> --}}
-
+                      </label>
                       {{-- Dark/Light Mode  --}}
                       <p class="divider"></p>
                       <p class="app-modal-header">Dark Mode <span class="

@@ -34,7 +34,7 @@ class ShoppingCartController extends Controller
             ['avatar' => $product->avatar, 'slug' => $product->slug, 'user_name' => $product->user->name, 'user_avatar' => $product->user->avatar, 'user_id' => $product->user_id]
         ]);
 
-        toastr()->success('Đã thêm vào danh sách yêu thích', 'Thông báo', ['timeOut' => 1000]);
+        toastr()->success('Đã thêm vào danh sách Giỏ hàng', 'Thông báo', ['timeOut' => 1000]);
         return redirect()->back();
     }
 
@@ -76,7 +76,7 @@ class ShoppingCartController extends Controller
     public function deleteFavourite($key)
     {
         Cart::remove($key);
-        toastr()->success('Hủy yêu thích thành công', 'Thông báo', ['timeOut' => 1000]);
+        toastr()->success('Hủy Giỏ hàng thành công', 'Thông báo', ['timeOut' => 1000]);
         return redirect()->back();
     }
 

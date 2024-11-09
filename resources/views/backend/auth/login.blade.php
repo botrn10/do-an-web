@@ -8,7 +8,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>Admin - Stu2hand</title>
+    <title>Admin - Website</title>
     <style>
         @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 
@@ -148,7 +148,7 @@
 
                         <div class="form-group"
                             style="align-items: center; display: flex; justify-content: space-between;">
-                            <a href="">Quên mật khẩu?</a>
+                            
                             <button type="submit" class="btn btn-login float-right">Đăng nhập</button>
                         </div>
 

@@ -156,18 +156,18 @@
             <div class="row">
                 <div class="col-lg-8 text-white">
                     <p style="margin-bottom: 5px;
-                    ">Designed by Le Minh Thang</p>
-                    <p>&copy; 2023 Stu2Hand. All rights reserved.</p>
+                    ">Designed by MYUEH</p>
+                    <p>&copy; 2024 Website. All rights reserved.</p>
                 </div>
                 <div class="col-lg-4">
                     <div class="item-footer">
                         <h3 class="title-footer text-white">
-                            WEBSITE BÁN ĐỒ CŨ CHO SINH VIÊN
+                            WEBSITE BÁN ĐỒ CŨ CHO SINH VIÊN UEH
                         </h3>
                         <ul class="d-flex">
                             <li class="mr-2">
                                 <a href="#">
-                                    <img src="{{ asset('assets/img/stu2hand_logo.png') }}" alt=""
+                                    <img src="{{ asset('assets/img/logoMYUEH3.png') }}" alt=""
                                         width="100%" height="45px">
                                 </a>
                             </li>

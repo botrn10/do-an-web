@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 26, 2023 lúc 04:52 AM
--- Phiên bản máy phục vụ: 10.4.24-MariaDB
--- Phiên bản PHP: 8.1.6
+-- Host: 127.0.0.1
+-- Generation Time: Jun 21, 2024 at 06:36 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,32 +18,32 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `stu2hand`
+-- Database: `demonha`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `articles`
+-- Table structure for table `articles`
 --
 
 CREATE TABLE `articles` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1,
   `hot` tinyint(4) NOT NULL DEFAULT 0,
   `menu_id` int(11) NOT NULL DEFAULT 0,
   `user_id` int(11) NOT NULL DEFAULT 0,
-  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `articles`
+-- Dumping data for table `articles`
 --
 
 INSERT INTO `articles` (`id`, `name`, `slug`, `description`, `avatar`, `status`, `hot`, `menu_id`, `user_id`, `content`, `created_at`, `updated_at`) VALUES
@@ -53,15 +53,15 @@ INSERT INTO `articles` (`id`, `name`, `slug`, `description`, `avatar`, `status`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1,
   `hot` tinyint(4) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`, `avatar`, `slug`, `status`, `hot`, `created_at`, `updated_at`) VALUES
@@ -84,11 +84,11 @@ INSERT INTO `categories` (`id`, `name`, `description`, `avatar`, `slug`, `status
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `ch_favorites`
+-- Table structure for table `ch_favorites`
 --
 
 CREATE TABLE `ch_favorites` (
-  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` char(36) NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `favorite_id` bigint(20) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -96,150 +96,105 @@ CREATE TABLE `ch_favorites` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `ch_favorites`
+-- Dumping data for table `ch_favorites`
 --
 
 INSERT INTO `ch_favorites` (`id`, `user_id`, `favorite_id`, `created_at`, `updated_at`) VALUES
 ('413b6568-6d37-4245-aaa2-718a7b96a814', 38, 35, '2023-07-31 02:31:39', '2023-07-31 02:31:39'),
-('8672f2a9-e821-4d74-bf9e-3f4d721bb96f', 13, 35, '2023-11-06 14:33:48', '2023-11-06 14:33:48'),
 ('98920a64-2317-4151-9847-947bb613d180', 13, 51, '2023-11-06 02:33:14', '2023-11-06 02:33:14');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `ch_messages`
+-- Table structure for table `ch_messages`
 --
 
 CREATE TABLE `ch_messages` (
-  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` char(36) NOT NULL,
   `from_id` bigint(20) NOT NULL,
   `to_id` bigint(20) NOT NULL,
-  `body` varchar(5000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `attachment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` varchar(5000) DEFAULT NULL,
+  `attachment` varchar(255) DEFAULT NULL,
   `seen` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `ch_messages`
+-- Dumping data for table `ch_messages`
 --
 
 INSERT INTO `ch_messages` (`id`, `from_id`, `to_id`, `body`, `attachment`, `seen`, `created_at`, `updated_at`) VALUES
-('03424ab7-f2f0-477c-a37a-eadaa80c2d91', 13, 51, 'oki lun', NULL, 1, '2023-11-06 14:49:55', '2023-11-06 14:50:10'),
-('0c51e08b-1331-4a41-a9fe-555493ef71bb', 13, 51, 'Nghĩa ơi', NULL, 1, '2023-11-06 11:23:25', '2023-11-06 11:24:05'),
-('13ee4c8a-fc9a-499d-8b14-4eea46640dce', 13, 51, 'a', NULL, 1, '2023-11-06 10:21:07', '2023-11-06 10:21:09'),
-('16ccad21-2c62-4bbc-8ed1-8070106f816d', 13, 51, 'Alo', NULL, 1, '2023-11-10 08:33:38', '2023-11-10 08:33:52'),
-('16f4d617-5f38-4f09-a6ac-a27b811c7d75', 13, 51, 'a', NULL, 1, '2023-11-06 10:55:27', '2023-11-06 10:55:29'),
-('17f25bda-1030-4ab3-af0e-84e370e2a1cc', 13, 51, 'a', NULL, 1, '2023-11-06 10:25:31', '2023-11-06 10:43:26'),
-('1cb8dd8e-8ec0-4343-8fdf-1584f2dc31bf', 13, 51, 'kỳ v', NULL, 1, '2023-11-07 03:32:43', '2023-11-07 03:32:53'),
 ('1dcaddd1-e067-4e01-b48c-2be414183c60', 51, 44, 'a', NULL, 0, '2023-11-06 09:16:50', '2023-11-06 09:16:50'),
 ('1e5a3cf0-88a3-488c-adaf-75cc696314a5', 38, 35, 'TT', NULL, 1, '2023-07-31 02:33:45', '2023-08-26 03:17:28'),
 ('1f8542a3-178e-487b-a704-46ef0b56fc8f', 40, 38, 'Oki tui b&aacute;n cho cậu', NULL, 1, '2023-09-22 08:47:28', '2023-09-22 08:47:30'),
-('234b6cf6-ce02-43ca-b72c-b69d9c11fbd0', 51, 13, 'aa', NULL, 1, '2023-11-06 14:49:02', '2023-11-06 14:49:07'),
 ('23e4f852-4f07-433e-becb-a86d498af4f1', 35, 13, 'hi', NULL, 1, '2023-08-26 03:11:26', '2023-11-06 01:58:47'),
-('24655404-65e6-416d-b955-fe9c176e58f1', 51, 13, 'kỳ v', NULL, 1, '2023-11-06 14:42:39', '2023-11-06 14:42:42'),
-('290543ff-e686-4a94-ae82-eca7e0938ceb', 13, 40, 'a', NULL, 0, '2023-11-07 03:29:23', '2023-11-07 03:29:23'),
-('29d6efb9-940c-4dc0-819d-1876ab9046dd', 13, 51, 'kkk', NULL, 1, '2023-11-07 02:31:57', '2023-11-07 02:32:07'),
-('29d71e03-d723-4a86-bb30-020f5a8ccf3b', 51, 13, 'aaa', NULL, 1, '2023-11-06 14:47:18', '2023-11-06 14:47:22'),
-('2bae9a98-7db0-4121-ab02-783b6d353364', 51, 13, 'h&iacute;', NULL, 1, '2023-11-06 08:49:25', '2023-11-06 08:49:50'),
-('2cc444fb-1946-4c1a-8988-58e398b66795', 51, 13, 'Bịnmh g&igrave; cữ', NULL, 1, '2023-11-06 14:42:11', '2023-11-06 14:42:11'),
-('2d1f03dd-5a71-474d-ad97-7aad8c685bb9', 13, 51, 'avc', NULL, 1, '2023-11-06 10:41:17', '2023-11-06 10:43:26'),
-('31870bd0-92b1-4126-a193-ad82f69171e3', 13, 51, 'a', NULL, 1, '2023-11-06 09:08:12', '2023-11-06 09:11:00'),
+('290543ff-e686-4a94-ae82-eca7e0938ceb', 13, 40, 'a', NULL, 1, '2023-11-07 03:29:23', '2024-06-20 11:36:21'),
+('2c11f2a0-9535-48f6-8922-a8862f213336', 76, 13, 'heloo admin', NULL, 1, '2024-06-19 14:57:10', '2024-06-19 14:57:59'),
+('2c22534c-4ea2-405b-9338-0e9c0b58a058', 73, 13, 'hi', NULL, 1, '2024-06-20 14:41:14', '2024-06-21 04:27:40'),
+('2fbb1ff5-84bc-4ff9-8af8-cff8b1142c76', 35, 13, 'sdfdzd', NULL, 1, '2024-06-19 14:41:48', '2024-06-20 14:36:54'),
 ('32470d11-a791-485b-91ae-667f4bcc84e4', 13, 13, 'aaa', NULL, 1, '2023-11-06 08:48:11', '2023-11-06 08:48:25'),
+('33b86a36-4adb-42ea-86b8-c9e3f42ae356', 35, 38, 'fdfds', NULL, 0, '2024-06-19 14:41:35', '2024-06-19 14:41:35'),
 ('34ee6bee-dfd8-4859-aee3-0ff533cebc55', 38, 40, 'Hihi', NULL, 1, '2023-09-22 08:48:09', '2023-09-22 08:48:10'),
-('357f5308-a437-427b-b580-c2f69651d289', 13, 51, 'aaa', NULL, 1, '2023-11-06 10:48:33', '2023-11-06 10:48:35'),
-('365131dc-75db-4f05-8f36-45457aa9ac05', 51, 13, '&acirc;', NULL, 1, '2023-11-06 08:50:39', '2023-11-06 09:07:48'),
-('3b0bb172-87cf-4f07-9d37-93aff580afcf', 51, 13, 'aaaaa', NULL, 1, '2023-11-06 14:47:46', '2023-11-06 14:48:54'),
-('40521917-fb2a-4479-9078-30e8f62f86ab', 51, 13, 'hế l&ocirc;', NULL, 1, '2023-11-10 01:40:11', '2023-11-10 01:40:24'),
+('3c56c4b8-f567-4cf9-86a3-c8f510d3d628', 40, 13, 'ch&agrave;o admin', NULL, 1, '2024-06-20 11:36:26', '2024-06-20 12:14:44'),
 ('423ff39e-7add-41aa-9ec6-f85465df5477', 13, 44, 'oki', NULL, 0, '2023-11-07 02:28:02', '2023-11-07 02:28:02'),
 ('42942b7d-a77a-435c-8739-85368a72345a', 35, 13, 'hi', NULL, 1, '2023-09-12 08:03:01', '2023-11-06 01:58:47'),
-('474354ab-7e32-4ab9-a9bd-93d0bfef2d91', 13, 51, 'l&agrave; siền', NULL, 1, '2023-11-06 11:17:18', '2023-11-06 11:21:27'),
-('4b829f98-f4f5-48c3-baa2-a2d8d99474f4', 13, 51, 'oki', NULL, 1, '2023-11-06 14:35:40', '2023-11-06 14:36:33'),
 ('4cf9a3a7-3ce1-416a-b434-4785c5d85319', 38, 40, 'Alo tui m&uacute;n mua', NULL, 1, '2023-09-22 08:46:17', '2023-09-22 08:47:19'),
-('4d85b80f-8501-4bb0-b5b3-c6528f828f0b', 13, 51, 'a', NULL, 1, '2023-11-06 09:07:49', '2023-11-06 09:07:54'),
 ('4dcc9a75-4ac4-4a14-a726-3955f5065eba', 48, 13, 'Alo bạn ơi', NULL, 1, '2023-10-31 03:52:49', '2023-10-31 03:52:54'),
-('4ed01ed6-7c35-4cf5-afc8-0fa531b00b1c', 13, 51, 'Tui n&egrave;', NULL, 1, '2023-11-06 11:23:39', '2023-11-06 11:24:05'),
 ('4f7ef0b4-7b13-4ed9-a654-0dd9ade57002', 38, 35, 'N&egrave;', NULL, 1, '2023-07-31 02:39:10', '2023-08-26 03:17:28'),
-('535fdaaf-e632-4862-b46d-d101b97f3a52', 13, 51, 'H&iacute;', NULL, 1, '2023-11-06 14:46:16', '2023-11-06 14:46:27'),
-('560db5f5-136c-4189-9aa2-a49ee5c7fc0e', 51, 13, 'Chớ sao nữa', NULL, 1, '2023-11-06 14:51:00', '2023-11-06 14:51:05'),
 ('568ed275-d38f-42f7-b0b5-e0b159822a70', 13, 44, 'a', NULL, 0, '2023-11-07 03:25:53', '2023-11-07 03:25:53'),
 ('571fec90-d89d-4b96-a51a-3e56e060c41e', 35, 13, 'alala', NULL, 1, '2023-08-25 07:42:38', '2023-11-06 01:58:47'),
-('5ae50412-61ce-42ed-873d-4a1ec0e05a59', 13, 51, 'aaa', NULL, 1, '2023-11-06 11:17:31', '2023-11-06 11:21:27'),
-('5dfaaaff-ce82-48c6-815b-72b477b1564a', 51, 13, '1', NULL, 1, '2023-11-06 08:59:10', '2023-11-06 09:07:48'),
-('5ec1d22f-cad3-4e2d-8606-da3e3e48f707', 51, 13, 'a', NULL, 1, '2023-11-06 09:03:53', '2023-11-06 09:07:48'),
-('625c1279-c40b-4620-b764-bea8a7df26b2', 51, 13, 'a', NULL, 1, '2023-11-06 10:07:55', '2023-11-06 10:07:58'),
-('62c1202c-3164-40d7-bfea-b27488643263', 51, 13, '&acirc;', NULL, 1, '2023-11-06 09:04:05', '2023-11-06 09:07:48'),
-('6416b36e-1d31-43d6-99d9-484d9698d4a6', 13, 51, 'a', NULL, 1, '2023-11-07 03:30:42', '2023-11-07 03:30:51'),
-('66e89ea5-9382-4b88-8bf7-4ddf8f580a62', 51, 13, 'oki', NULL, 1, '2023-11-06 14:31:57', '2023-11-06 14:32:15'),
 ('68a00c72-da65-437a-8f3d-5d59ab98fb09', 38, 35, 'Hi', NULL, 1, '2023-07-31 02:38:04', '2023-08-26 03:17:28'),
-('693d58cd-7210-4010-8633-ee798da412bd', 51, 13, 'f', NULL, 1, '2023-11-06 14:45:38', '2023-11-06 14:45:45'),
 ('6a6d2988-5c79-43df-8327-b6a9bca1a0be', 44, 13, 'Ủa', NULL, 1, '2023-11-06 14:52:23', '2023-11-06 14:52:59'),
-('6c5c449f-02ed-441a-b7d9-57ad20cafd55', 13, 51, 'aa', NULL, 1, '2023-11-06 14:48:55', '2023-11-06 14:49:01'),
+('7106d616-d19b-434f-9407-981c603d0f06', 76, 76, 'hi', NULL, 0, '2024-06-19 14:54:47', '2024-06-19 14:54:47'),
 ('7178460c-d84e-4742-8694-d08fb901bf5c', 38, 35, 'L&ocirc;', NULL, 1, '2023-07-31 02:27:21', '2023-08-26 03:17:28'),
-('734d0dba-af5f-4d95-891d-a677d88b1dd1', 13, 51, 'a', NULL, 1, '2023-11-07 03:25:02', '2023-11-07 03:25:35'),
-('7469cfc8-5a43-4421-9295-05a6a5f113f2', 51, 13, 'a', NULL, 1, '2023-11-06 09:04:29', '2023-11-06 09:07:48'),
-('7473f047-63df-45c5-b466-0c0f952a67c5', 13, 51, 'ok', NULL, 1, '2023-11-06 14:51:15', '2023-11-06 14:52:29'),
-('7528f23f-e076-4c32-a688-25ee6a371fdd', 13, 40, 'a', NULL, 0, '2023-11-07 03:28:13', '2023-11-07 03:28:13'),
-('79c6a747-44ba-4b0c-b1b1-0b73d5831dd5', 51, 13, 'h&iacute;', NULL, 1, '2023-11-06 14:49:26', '2023-11-06 14:49:40'),
+('719445ad-ca84-408d-9a75-c3cbd5fe28d4', 75, 75, 'hi', NULL, 0, '2024-06-19 14:30:23', '2024-06-19 14:30:23'),
+('73d4f531-4e72-40d2-85d8-8f4f14ef2373', 71, 71, 'hello admin', NULL, 0, '2024-06-20 14:32:49', '2024-06-20 14:32:49'),
+('7528f23f-e076-4c32-a688-25ee6a371fdd', 13, 40, 'a', NULL, 1, '2023-11-07 03:28:13', '2024-06-20 11:36:21'),
 ('7ad6a347-4890-4098-bea3-2b059af6d6c2', 13, 13, 'hi', NULL, 1, '2023-10-31 08:58:02', '2023-10-31 08:58:58'),
-('82b3a74b-158e-4f0a-9808-3aee5095fc25', 13, 51, 'Hello', NULL, 1, '2023-11-06 10:01:29', '2023-11-06 10:01:34'),
-('89d17156-e019-4b77-a88d-187dc9220751', 13, 51, 'a', NULL, 1, '2023-11-06 14:43:04', '2023-11-06 14:43:25'),
+('87a07687-813b-49a2-a10c-397ff342a5bd', 40, 38, 'tư vấn cho m&igrave;nh', NULL, 0, '2024-06-20 11:36:55', '2024-06-20 11:36:55'),
+('887a38b5-4576-4b17-b57f-4c4c682583af', 40, 38, 'hello bạn', NULL, 0, '2024-06-20 11:36:49', '2024-06-20 11:36:49'),
+('8ca20355-d039-4468-b40b-f232a69e519d', 75, 75, 'gyujghjfyug', NULL, 0, '2024-06-19 14:30:32', '2024-06-19 14:30:32'),
 ('8ed79427-5fdf-4876-8085-f15e4d0b25f0', 13, 13, 'a', NULL, 1, '2023-11-06 08:47:56', '2023-11-06 08:48:01'),
-('8fddd5a4-787c-4c47-9721-06e2759f2a13', 13, 51, 'kk', NULL, 1, '2023-11-07 03:31:17', '2023-11-07 03:31:24'),
+('90b2f91c-3c21-44e9-9ea7-a2d1137d2698', 13, 76, 'ch&agrave;o cậu', NULL, 1, '2024-06-19 14:58:04', '2024-06-20 04:31:36'),
 ('920f6f93-4f35-43a5-b7b3-9fc6fdbc6a9f', 13, 44, 'o', NULL, 1, '2023-11-06 14:53:05', '2023-11-06 14:53:06'),
 ('93d53471-adff-4666-b541-b0ed83b94684', 44, 13, 'oki lun', NULL, 1, '2023-11-06 14:52:11', '2023-11-06 14:52:59'),
-('951194f8-3dd9-4609-ba9a-ce6e55cf401c', 13, 51, 'Alo', NULL, 1, '2023-11-07 03:32:21', '2023-11-07 03:32:53'),
+('98309932-633f-47e9-9281-bd51954d39f0', 71, 71, '😝', NULL, 0, '2024-06-20 14:32:56', '2024-06-20 14:32:56'),
+('9ae5a3ec-fbfb-4c74-ab4b-09e3f4d9bfd9', 13, 40, 'hello ban', NULL, 0, '2024-06-20 14:36:49', '2024-06-20 14:36:49'),
 ('9b54515d-7759-4c2a-a1f5-19ee0c37ecfd', 38, 35, '😇', NULL, 1, '2023-08-03 15:15:16', '2023-08-26 03:17:28'),
-('9e122e9a-cc11-4013-a0b3-962d0b198d6e', 13, 51, 'a', NULL, 1, '2023-11-06 08:50:07', '2023-11-06 08:50:17'),
-('a1db4c53-cb8f-4dd7-8b8e-8d068d7c5d43', 51, 13, 'Giữ &agrave;', NULL, 1, '2023-11-06 14:45:22', '2023-11-06 14:45:36'),
-('a247d8bc-89b9-44a5-9071-740e95477ae6', 51, 13, 'a', NULL, 1, '2023-11-06 10:04:19', '2023-11-06 10:04:22'),
-('a3fc7d71-0608-475a-95c8-92b3dccbe147', 13, 51, 'oki', NULL, 1, '2023-11-07 02:15:03', '2023-11-07 02:18:36'),
-('a82468ad-2175-4cf4-b007-8b6b951326a4', 13, 51, 'a', NULL, 1, '2023-11-06 08:49:56', '2023-11-06 08:50:17'),
-('bce67f8c-a756-462d-92e7-5bd86d2bebd3', 51, 13, 'H&iacute;', NULL, 1, '2023-11-06 14:27:13', '2023-11-06 14:32:15'),
-('beaebfc8-0b9d-4a46-82c7-4ca1173ba45a', 51, 13, 'hehe', NULL, 1, '2023-11-06 14:52:46', '2023-11-06 14:52:56'),
-('c27cd1c6-fb0a-4528-98f2-f6f9b08bbfac', 13, 51, 'a', NULL, 1, '2023-11-06 10:25:11', '2023-11-06 10:25:15'),
-('c4a4c276-9428-4c0d-85b5-8f986401dec5', 13, 51, 'h&iacute;', NULL, 1, '2023-11-06 02:13:31', '2023-11-06 02:13:37'),
-('c8df3339-3d07-4906-8d2f-705a70fb73c9', 51, 13, 'H&eacute; lố ch&agrave;o buổi s&aacute;ng', NULL, 1, '2023-11-07 02:14:37', '2023-11-07 02:14:55'),
-('cbe49085-29d6-44d7-82a5-be5cdb3f8bc4', 51, 13, 'hi', NULL, 1, '2023-11-07 03:31:30', '2023-11-07 03:31:56'),
+('a215b2e3-89b8-4f57-9418-8b5534803a7c', 76, 43, '&acirc;f', NULL, 0, '2024-06-19 14:55:10', '2024-06-19 14:55:10'),
+('b1703f16-cafb-4776-a71d-63bca5b992dd', 35, 38, '🤑', NULL, 0, '2024-06-19 14:41:41', '2024-06-19 14:41:41'),
+('b7f66de6-ac5b-47c7-94d4-8926e16f4fdd', 40, 13, '', '{\"new_name\":\"0f99dc49-72e4-4f72-930d-67f3a3641d19.jpg\",\"old_name\":\"download.jpg\"}', 1, '2024-06-20 11:36:37', '2024-06-20 12:14:44'),
+('bcb3565a-5627-43e3-9909-952874fa666a', 35, 13, '', '{\"new_name\":\"d7847b6d-6360-4407-a91e-8aec8a848eec.png\",\"old_name\":\"01.PNG\"}', 1, '2024-06-19 14:41:54', '2024-06-20 14:36:54'),
+('c343bab4-cbe5-4357-ad48-80bc9309bb1e', 76, 13, 'hi', NULL, 1, '2024-06-19 14:55:00', '2024-06-19 14:57:59'),
 ('cf62655b-02de-4ffe-bb7f-0cac9fe01065', 38, 35, 'Hi', NULL, 1, '2023-07-31 02:29:35', '2023-08-26 03:17:28'),
 ('d0bcab54-2459-4714-8a11-0a3c32ec0373', 38, 40, 'H&Uacute;', NULL, 1, '2023-09-22 08:47:05', '2023-09-22 08:47:19'),
-('d5a84537-2d32-4df2-8bbb-c025f51b3c7f', 13, 51, 'a', NULL, 1, '2023-11-07 02:55:49', '2023-11-07 02:56:33'),
-('d941df6b-df77-4c8c-9b36-2f9c8bb9faac', 51, 13, '1', NULL, 1, '2023-11-06 08:49:29', '2023-11-06 08:49:50'),
+('d3a08cda-d58d-4fba-9723-ca9b19a513cf', 75, 75, '☺️🤑', '{\"new_name\":\"9faa56e9-801f-4f80-a619-e000efa156b8.png\",\"old_name\":\"x2.PNG\"}', 0, '2024-06-19 14:30:41', '2024-06-19 14:30:41'),
 ('da609e5d-73d2-45ef-b035-680f530fb226', 38, 35, '3', NULL, 1, '2023-08-03 14:46:37', '2023-08-26 03:17:28'),
-('df23ea93-8555-40de-9260-f00a37bf826f', 13, 51, 'a', NULL, 1, '2023-11-06 10:22:31', '2023-11-06 10:25:15'),
-('e33ac79b-b3a5-4a3a-a2d5-71d1e58801e0', 13, 51, 'a', NULL, 1, '2023-11-06 10:43:40', '2023-11-06 10:43:43'),
-('e3c035e2-f337-4cbe-af6a-04c21b8a309e', 51, 13, 'Thế ad', NULL, 1, '2023-11-06 14:50:12', '2023-11-06 14:50:34'),
-('e3deeaaa-53ea-4e6c-8cb0-8de1fd14ad52', 51, 13, 'oki', NULL, 1, '2023-11-06 14:41:59', '2023-11-06 14:42:00'),
-('e4c28d99-cc6b-4b2c-8f14-bb8c8b82e2a3', 51, 13, 'o', NULL, 1, '2023-11-06 14:44:10', '2023-11-06 14:45:01'),
-('e506c286-0686-458b-96c4-ab861f3e2893', 13, 40, 'kkk', NULL, 0, '2023-10-11 13:51:10', '2023-10-11 13:51:10'),
-('e5a98c78-3c88-46c4-8b67-728f4e8b7f44', 13, 51, 'a', NULL, 1, '2023-11-07 02:54:52', '2023-11-07 02:55:03'),
-('e91a657f-d631-4cf9-8fcf-040182ecf22b', 51, 13, 'aaa', NULL, 1, '2023-11-06 14:47:31', '2023-11-06 14:47:33'),
+('e3e40564-0e68-4bae-aa02-64fba7204fe2', 35, 35, 'hi', NULL, 1, '2024-06-19 14:42:05', '2024-06-19 14:44:54'),
+('e506c286-0686-458b-96c4-ab861f3e2893', 13, 40, 'kkk', NULL, 1, '2023-10-11 13:51:10', '2024-06-20 11:36:21'),
 ('ecb70065-5cc4-4fc8-a7f8-dcf9c222ae28', 13, 44, 'Hi', NULL, 1, '2023-10-27 07:56:27', '2023-10-27 07:56:31'),
-('ee4acd65-e6e5-417a-b5d1-4b09aa7efd28', 13, 51, 'Ngộ ta', NULL, 1, '2023-11-06 14:43:53', '2023-11-06 14:44:02'),
 ('ee9f4f11-70bb-4646-bee7-f024742f0ab7', 51, 44, 'a', NULL, 0, '2023-11-06 09:08:14', '2023-11-06 09:08:14'),
-('f1d4cf2d-f4a2-41d2-a969-bc76aad38f11', 51, 13, 'Tụi n&egrave;', NULL, 1, '2023-11-06 14:34:15', '2023-11-06 14:34:30'),
-('f48ad5ed-2e3b-47d5-afb7-34e95871ecf4', 13, 51, 'Giỡn qu&agrave;i n&iacute;', NULL, 1, '2023-11-07 02:31:23', '2023-11-07 02:31:25'),
-('fabbf797-a3dd-4a32-8e38-5b2d4a97283a', 51, 13, 'a', NULL, 1, '2023-11-06 09:06:24', '2023-11-06 09:07:48'),
-('fac76244-02a2-4811-b2d5-e139d09278b9', 13, 40, 'a', NULL, 0, '2023-11-07 03:26:56', '2023-11-07 03:26:56'),
+('ef780da5-cf8d-41b5-bcdd-3516ac1342d6', 71, 68, 'xin ch&agrave;o', NULL, 0, '2024-06-20 14:33:06', '2024-06-20 14:33:06'),
+('fac76244-02a2-4811-b2d5-e139d09278b9', 13, 40, 'a', NULL, 1, '2023-11-07 03:26:56', '2024-06-20 11:36:21'),
 ('fb52ebb6-1fbe-4eb1-97cc-054448a285cb', 40, 38, '🚩', NULL, 1, '2023-09-22 08:47:49', '2023-09-22 08:47:52');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `districts`
+-- Table structure for table `districts`
 --
 
 CREATE TABLE `districts` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `prefix` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `slug` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `prefix` varchar(20) DEFAULT NULL,
+  `slug` varchar(100) DEFAULT NULL,
   `province_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `districts`
+-- Dumping data for table `districts`
 --
 
 INSERT INTO `districts` (`id`, `name`, `prefix`, `slug`, `province_id`) VALUES
@@ -956,29 +911,29 @@ INSERT INTO `districts` (`id`, `name`, `prefix`, `slug`, `province_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `jobs`
+-- Table structure for table `jobs`
 --
 
 CREATE TABLE `jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` varchar(255) NOT NULL,
+  `payload` longtext NOT NULL,
   `attempts` tinyint(3) UNSIGNED NOT NULL,
   `reserved_at` int(10) UNSIGNED DEFAULT NULL,
   `available_at` int(10) UNSIGNED NOT NULL,
@@ -986,7 +941,7 @@ CREATE TABLE `jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `jobs`
+-- Dumping data for table `jobs`
 --
 
 INSERT INTO `jobs` (`id`, `queue`, `payload`, `attempts`, `reserved_at`, `available_at`, `created_at`) VALUES
@@ -1138,15 +1093,15 @@ INSERT INTO `jobs` (`id`, `queue`, `payload`, `attempts`, `reserved_at`, `availa
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `menus`
+-- Table structure for table `menus`
 --
 
 CREATE TABLE `menus` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1,
   `hot` tinyint(4) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1154,7 +1109,7 @@ CREATE TABLE `menus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `menus`
+-- Dumping data for table `menus`
 --
 
 INSERT INTO `menus` (`id`, `name`, `description`, `avatar`, `slug`, `status`, `hot`, `created_at`, `updated_at`) VALUES
@@ -1163,17 +1118,17 @@ INSERT INTO `menus` (`id`, `name`, `description`, `avatar`, `slug`, `status`, `h
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -1206,55 +1161,59 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (31, '2023_09_24_085147_create_payments_table', 18),
 (33, '2023_11_04_160526_create_nofitications_table', 19),
 (34, '2023_11_13_081251_create_profile_table', 20),
-(35, '2023_11_17_073723_create_recharge_table', 21);
+(35, '2023_11_17_073723_create_recharge_table', 21),
+(36, '2024_06_19_999999_add_active_status_to_users', 22),
+(37, '2024_06_19_999999_add_avatar_to_users', 22),
+(38, '2024_06_19_999999_add_dark_mode_to_users', 22),
+(39, '2024_06_19_999999_add_messenger_color_to_users', 22);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `model_has_permissions`
+-- Table structure for table `model_has_permissions`
 --
 
 CREATE TABLE `model_has_permissions` (
   `permission_id` bigint(20) UNSIGNED NOT NULL,
-  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_type` varchar(255) NOT NULL,
   `model_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `model_has_roles`
+-- Table structure for table `model_has_roles`
 --
 
 CREATE TABLE `model_has_roles` (
   `role_id` bigint(20) UNSIGNED NOT NULL,
-  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_type` varchar(255) NOT NULL,
   `model_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `model_has_roles`
+-- Dumping data for table `model_has_roles`
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 13),
 (1, 'App\\Models\\User', 35),
-(1, 'App\\Models\\User', 48),
 (1, 'App\\Models\\User', 51),
 (4, 'App\\Models\\User', 40),
-(4, 'App\\Models\\User', 69);
+(4, 'App\\Models\\User', 69),
+(4, 'App\\Models\\User', 76);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `notifications`
+-- Table structure for table `notifications`
 --
 
 CREATE TABLE `notifications` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `from_user_id` int(11) NOT NULL DEFAULT 0,
   `to_user_id` int(11) NOT NULL DEFAULT 0,
   `status` int(11) NOT NULL DEFAULT 0,
@@ -1263,7 +1222,7 @@ CREATE TABLE `notifications` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `notifications`
+-- Dumping data for table `notifications`
 --
 
 INSERT INTO `notifications` (`id`, `title`, `content`, `avatar`, `from_user_id`, `to_user_id`, `status`, `created_at`, `updated_at`) VALUES
@@ -1312,12 +1271,17 @@ INSERT INTO `notifications` (`id`, `title`, `content`, `avatar`, `from_user_id`,
 (108, 'Đồ dùng đã được duyệt', 'Đồ dùng Giáo trình Lý thuyết đồ thị đã được duyệt', '/uploads/2023/11/26/2023-11-26__z4913693198436-7cc437c6502c2dbd64cd550a8f43c426.jpg', 13, 73, 0, '2023-11-26 00:45:12', '2023-11-26 00:45:12'),
 (109, 'Đồ dùng đã được duyệt', 'Đồ dùng Giáo trình Hóa học đại cương giá 30k đã được duyệt', '/uploads/2023/11/26/2023-11-26__hoahocdaicuong.jpg', 13, 71, 0, '2023-11-26 00:49:12', '2023-11-26 00:49:12'),
 (110, 'Đồ dùng đã được duyệt', 'Đồ dùng Giáo trình Kinh tế vĩ mô đã sử dụng giá 20k đã được duyệt', '/uploads/2023/11/26/2023-11-26__kinhtehocvimo2.jpg', 13, 71, 0, '2023-11-26 00:49:20', '2023-11-26 00:49:20'),
-(111, 'Đồ dùng đã được duyệt', 'Đồ dùng Giáo trình Kỹ năng học đại học đã được duyệt', '/uploads/2023/11/26/2023-11-26__z4913691782526-f45ad522264c6ffccaa144ec89d1111c.jpg', 13, 71, 0, '2023-11-26 00:49:28', '2023-11-26 00:49:28');
+(111, 'Đồ dùng đã được duyệt', 'Đồ dùng Giáo trình Kỹ năng học đại học đã được duyệt', '/uploads/2023/11/26/2023-11-26__z4913691782526-f45ad522264c6ffccaa144ec89d1111c.jpg', 13, 71, 0, '2023-11-26 00:49:28', '2023-11-26 00:49:28'),
+(112, 'Đồ dùng đã được duyệt', 'Đồ dùng demoapp cvbcvbcvb cvb đã được duyệt', NULL, 35, 75, 0, '2024-06-19 14:33:32', '2024-06-19 14:33:32'),
+(113, 'Đồ dùng đã được duyệt', 'Đồ dùng vvvvvvvvvvvv v c sdf xzccxzzxc đã được duyệt', '/uploads/2024/06/20/2024-06-20__2023-07-13-avatar-admin.png', 13, 76, 0, '2024-06-20 04:42:14', '2024-06-20 04:42:14'),
+(114, 'Đồ dùng đã được duyệt', 'Đồ dùng demo đăng bài sp đã được duyệt', '/uploads/2024/06/20/2024-06-20__anh-khung-anh-091342092-1.png', 13, 40, 0, '2024-06-20 11:40:23', '2024-06-20 11:40:23'),
+(115, 'Đồ dùng không được duyệt', 'Đồ dùng ffffffffff dasasdf dzzxxzvc không được duyệt', '/uploads/2024/06/20/2024-06-20__anh-khung-anh-091342092-1.png', 13, 76, 0, '2024-06-20 11:40:37', '2024-06-20 11:40:37'),
+(116, 'Đồ dùng đã được duyệt', 'Đồ dùng demo dang ban sp đã được duyệt', '/uploads/2024/06/20/2024-06-20__download.jpg', 13, 71, 0, '2024-06-20 14:38:13', '2024-06-20 14:38:13');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
@@ -1331,7 +1295,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `orders`
+-- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`id`, `or_transaction_id`, `or_product_id`, `or_qty`, `or_price`, `created_at`, `updated_at`) VALUES
@@ -1362,28 +1326,36 @@ INSERT INTO `orders` (`id`, `or_transaction_id`, `or_product_id`, `or_qty`, `or_
 (102, 132, 91, 1, 40000, '2023-11-17 23:52:33', '2023-11-17 23:52:33'),
 (103, 132, 83, 1, 30000, '2023-11-17 23:52:33', '2023-11-17 23:52:33'),
 (104, 133, 92, 1, 20000, '2023-11-18 00:29:43', '2023-11-18 00:29:43'),
-(105, 133, 93, 1, 30000, '2023-11-18 00:29:44', '2023-11-18 00:29:44');
+(105, 133, 93, 1, 30000, '2023-11-18 00:29:44', '2023-11-18 00:29:44'),
+(106, 134, 140, 1, 999999, '2024-06-19 14:43:55', '2024-06-19 14:43:55'),
+(107, 135, 138, 1, 20000, '2024-06-20 11:34:19', '2024-06-20 11:34:19'),
+(108, 135, 137, 1, 20000, '2024-06-20 11:34:19', '2024-06-20 11:34:19'),
+(109, 136, 125, 1, 180000, '2024-06-20 11:34:54', '2024-06-20 11:34:54'),
+(110, 137, 132, 1, 10000, '2024-06-20 11:51:19', '2024-06-20 11:51:19'),
+(111, 138, 130, 1, 10000, '2024-06-20 14:31:54', '2024-06-20 14:31:54'),
+(112, 138, 116, 1, 2000000, '2024-06-20 14:31:54', '2024-06-20 14:31:54'),
+(113, 139, 105, 1, 50000, '2024-06-20 14:32:22', '2024-06-20 14:32:22');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `otps`
+-- Table structure for table `otps`
 --
 
 CREATE TABLE `otps` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `type_otp` char(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'update_profile|otp_register',
+  `code` varchar(255) DEFAULT NULL,
+  `type_otp` char(255) NOT NULL COMMENT 'update_profile|otp_register',
   `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT ' 0 khởi tạo, 1 đã gủi, 2 đã sử dụng, -1 lỗi',
   `user_id` int(11) NOT NULL DEFAULT 0,
-  `service` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'email|sms',
+  `service` varchar(255) NOT NULL COMMENT 'email|sms',
   `re_send_otp` tinyint(4) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `otps`
+-- Dumping data for table `otps`
 --
 
 INSERT INTO `otps` (`id`, `code`, `type_otp`, `status`, `user_id`, `service`, `re_send_otp`, `created_at`, `updated_at`) VALUES
@@ -1399,31 +1371,38 @@ INSERT INTO `otps` (`id`, `code`, `type_otp`, `status`, `user_id`, `service`, `r
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('dothanhnhan20k@gmail.com', '$2y$10$jJssOzm.pBvYsOTxcMqIGugVpwLOeisLoXINXHck2GRURcVASwBK.$2y$10$eZERMKqb19dUKQ4WDRwlDOkTbpit.dmfKZjFUUZotYmgYrdGbC4QK', '2024-06-20 05:42:56');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `password_reset_tokens`
+-- Table structure for table `password_reset_tokens`
 --
 
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `payments`
+-- Table structure for table `payments`
 --
 
 CREATE TABLE `payments` (
@@ -1431,18 +1410,18 @@ CREATE TABLE `payments` (
   `p_transaction_id` int(11) DEFAULT NULL,
   `p_user_id` int(11) DEFAULT NULL,
   `p_money` int(11) DEFAULT NULL,
-  `p_transaction_code` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `p_note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `p_vnp_response_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `p_code_vnpay` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `p_code_bank` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `p_transaction_code` varchar(20) DEFAULT NULL,
+  `p_note` varchar(255) DEFAULT NULL,
+  `p_vnp_response_code` varchar(255) DEFAULT NULL,
+  `p_code_vnpay` varchar(255) DEFAULT NULL,
+  `p_code_bank` varchar(255) DEFAULT NULL,
   `p_time` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `payments`
+-- Dumping data for table `payments`
 --
 
 INSERT INTO `payments` (`id`, `p_transaction_id`, `p_user_id`, `p_money`, `p_transaction_code`, `p_note`, `p_vnp_response_code`, `p_code_vnpay`, `p_code_bank`, `p_time`, `created_at`, `updated_at`) VALUES
@@ -1465,26 +1444,30 @@ INSERT INTO `payments` (`id`, `p_transaction_id`, `p_user_id`, `p_money`, `p_tra
 (33, 12, 51, 10000, '20231117190412', 'Noi dung thanh toan', '00', '14185762', 'NCB', '2023-11-17 19:04:00', '2023-11-17 12:04:32', '2023-11-17 12:04:32'),
 (34, 132, 68, 70000, '20231118065203', 'Noi dung thanh toan', '00', '14186293', 'NCB', '2023-11-18 06:52:00', '2023-11-17 23:52:33', '2023-11-17 23:52:33'),
 (35, 13, 68, 20000, '20231118070503', 'Noi dung thanh toan', '00', '14186295', 'NCB', '2023-11-18 07:05:00', '2023-11-18 00:05:30', '2023-11-18 00:05:30'),
-(36, 133, 68, 50000, '20231118072921', 'Noi dung thanh toan', '00', '14186298', 'NCB', '2023-11-18 07:29:00', '2023-11-18 00:29:44', '2023-11-18 00:29:44');
+(36, 133, 68, 50000, '20231118072921', 'Noi dung thanh toan', '00', '14186298', 'NCB', '2023-11-18 07:29:00', '2023-11-18 00:29:44', '2023-11-18 00:29:44'),
+(37, 135, 40, 2040000, '20240620183336', 'Noi dung thanh toan', '00', '14469961', 'NCB', '2024-06-20 18:34:00', '2024-06-20 11:34:19', '2024-06-20 11:34:19'),
+(38, 14, 40, 1000000, '20240620183513', 'Noi dung thanh toan', '00', '14469964', 'NCB', '2024-06-20 18:35:00', '2024-06-20 11:35:43', '2024-06-20 11:35:43'),
+(39, 15, 71, 2000000, '20240620185002', 'Noi dung thanh toan', '00', '14469979', 'NCB', '2024-06-20 18:50:00', '2024-06-20 11:50:31', '2024-06-20 11:50:31'),
+(40, 138, 71, 2010000, '20240620213126', 'Noi dung thanh toan', '00', '14470154', 'NCB', '2024-06-20 21:31:00', '2024-06-20 14:31:54', '2024-06-20 14:31:54');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `permissions`
+-- Table structure for table `permissions`
 --
 
 CREATE TABLE `permissions` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `group` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `guard_name` varchar(255) NOT NULL,
+  `group` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `permissions`
+-- Dumping data for table `permissions`
 --
 
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group`, `description`, `created_at`, `updated_at`) VALUES
@@ -1529,16 +1512,16 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group`, `description`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1548,15 +1531,15 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1,
   `hot` tinyint(4) NOT NULL DEFAULT 0,
   `category_id` int(11) NOT NULL DEFAULT 0,
@@ -1567,14 +1550,14 @@ CREATE TABLE `products` (
   `number` int(11) NOT NULL DEFAULT 0,
   `sale` tinyint(4) NOT NULL DEFAULT 0,
   `user_id` int(11) NOT NULL DEFAULT 0,
-  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `order_date` varchar(100) CHARACTER SET utf8 DEFAULT NULL
+  `order_date` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `slug`, `description`, `avatar`, `status`, `hot`, `category_id`, `ward_id`, `district_id`, `province_id`, `price`, `number`, `sale`, `user_id`, `content`, `created_at`, `updated_at`, `order_date`) VALUES
@@ -1620,7 +1603,7 @@ INSERT INTO `products` (`id`, `name`, `slug`, `description`, `avatar`, `status`,
 (102, 'Test xóa thống kê phía quản trị', 'test-xoa-thong-ke-phia-quan-tri', 'Test xóa thống kê phía quản trị', '2023-11-25__369671793-263211566563630-474733205591603941-n.jpg', -1, 0, 12, 2974, 214, 16, 30000, 0, 0, 70, NULL, '2023-11-25 03:52:36', '2023-11-25 03:52:57', '2023-11-25'),
 (103, 'Bàn Phím Cơ Zero E-Sports Gaming Gear Led', 'ban-phim-co-zero-e-sports-gaming-gear-led', '-Kích thước: 350X120X35mm\r\n-Đế : bọckim loại\r\n-Chất liệu phím: nhựa ABS-Keycaps Double Shot : xuyên ledđèn led 3 vùng mà không tróc sơn theo thời gian.\r\n-Led: LED Rainbow10chế độ', '2023-11-25__z4913720393272-86a37e5fbade36bb7506671ac5372caf.jpg', 2, 0, 9, 2339, 163, 12, 100000, 0, 0, 73, NULL, '2023-11-25 08:16:41', '2023-11-25 08:26:58', '2023-11-25'),
 (104, 'Chuột Có dây Gaming Zadez G-610M', 'chuot-co-day-gaming-zadez-g-610m', 'Kiểu dáng gọn nhẹ, năng động.\r\nĐộ phân giải quang học có thể tùy chỉnh lên đến 3200 DPI.\r\nDây dài 86 cm.', '2023-11-25__z4913721623187-42ed2c77b538ffc1f5fc5cf576d90a1d.jpg', 2, 0, 9, 2375, 166, 12, 80000, 0, 0, 73, NULL, '2023-11-25 08:18:44', '2023-11-25 08:26:43', '2023-11-25'),
-(105, 'Đèn bàn dùng bóng huỳnh quang Compact', 'den-ban-dung-bong-huynh-quang-compact', 'Ưu điểm: Bóng đèn huỳnh quang compact có thiết kế phần đuôi xoắn. Đèn compact tiết kiệm điện năng hơn so với đèn halogen và đèn dây tóc, tỏa nhiệt thấp nên không làm người dùng thấy quá nóng khi sử dụng lâu.', '2023-11-25__z4913725112143-a7624c7819af0f4812c156d9e6841431.jpg', 2, 0, 9, 2372, 166, 12, 50000, 0, 0, 73, NULL, '2023-11-25 08:21:34', '2023-11-25 08:26:25', '2023-11-25'),
+(105, 'Đèn bàn dùng bóng huỳnh quang Compact', 'den-ban-dung-bong-huynh-quang-compact', 'Ưu điểm: Bóng đèn huỳnh quang compact có thiết kế phần đuôi xoắn. Đèn compact tiết kiệm điện năng hơn so với đèn halogen và đèn dây tóc, tỏa nhiệt thấp nên không làm người dùng thấy quá nóng khi sử dụng lâu.', '2023-11-25__z4913725112143-a7624c7819af0f4812c156d9e6841431.jpg', 3, 0, 9, 2372, 166, 12, 50000, 0, 0, 73, NULL, '2023-11-25 08:21:34', '2024-06-20 14:32:22', '2023-11-25'),
 (106, 'Loa Máy Tính Laptop Bộ 2 Cái', 'loa-may-tinh-laptop-bo-2-cai', 'LOA MÁY TÍNH LAPTOP BỘ 2 CÁI TS38-B 5W x 2 LENOVO THÔNG SỐ HÃNG  LENOVO CHẤT LIỆU ABS CHIỀU DÀI 160CM CÔNG SUẤT ĐẦU RA 5W x 2 KÍCH THƯỚC SẢN PHẨM 11.8 x 8.3 x 7.3 CM ...', '2023-11-25__z4913714682548-ec2419826bd0524536f3b327faf96e4b.jpg', 2, 0, 9, 2373, 166, 12, 80000, 0, 0, 73, NULL, '2023-11-25 08:23:53', '2023-11-25 08:26:15', '2023-11-25'),
 (107, 'Quạt lửng Lifan QL-616', 'quat-lung-lifan-ql-616', 'Công suất : 45W\r\nTốc độ : 3 tốc độ gió\r\nKích thước cánh 400mm \r\nXuất xứ:  VIỆT NAM\r\nBảo hành 12 tháng', '2023-11-25__z4913717935637-674b353eaa856f5d35aa4c0d366a70b6.jpg', 2, 0, 9, 2346, 164, 12, 20000, 0, 0, 73, NULL, '2023-11-25 08:25:02', '2023-11-25 08:25:59', '2023-11-25'),
 (108, 'Đồ điện tử chờ duyệt', 'do-dien-tu-cho-duyet', 'Đồ điện tử chờ duyệt\r\nĐồ điện tử chờ duyệt', '2023-11-25__z4913718015011-b0a8317be97d57a9be80a957a101d762.jpg', 1, 0, 9, 2336, 163, 12, 100000, 0, 0, 73, NULL, '2023-11-25 08:28:08', '2023-11-25 08:28:08', '2023-11-25'),
@@ -1630,7 +1613,7 @@ INSERT INTO `products` (`id`, `name`, `slug`, `description`, `avatar`, `status`,
 (112, 'Mũ lưỡi trai thể thao không chóp Aonijie', 'mu-luoi-trai-the-thao-khong-chop-aonijie', 'Mũ lưỡi trai thể thao không chóp Aonijie E4080 chạy bộ, đạp xe hay chơi Golf, chơi Tennis. Bất kỳ một môn thể thao ngoài trời nào khác. Sử dụng linh hoạt cho nam và nữ với một cảm giác thông thoáng.', '2023-11-25__mu-luoi-trai-nua-dau.jpg', -1, 0, 10, 2327, 162, 12, 110000, 0, 0, 70, NULL, '2023-11-25 08:34:45', '2023-11-25 08:41:20', '2023-11-25'),
 (113, 'Máy bộ DELL CORE I5 . Máy tính đồng bộ Core I5', 'may-bo-dell-core-i5-may-tinh-dong-bo-core-i5', 'Thiết kế đẹp mắt, sang trọng linh kiện có tính đồng bộ cao.\r\nHệ thống hoạt động êm ái, tiết kiệm điện.', '2023-11-25__394559721-7094791220565897-8671044683276061942-n.jpg', 2, 0, 10, 2333, 162, 12, 2000000, 0, 0, 70, NULL, '2023-11-25 08:35:56', '2023-11-25 08:40:56', '2023-11-25'),
 (114, 'Túi đựng giày thể thao', 'tui-dung-giay-the-thao', 'Túi đựng giày thể thao dễ dàng sử dụng', '2023-11-25__tui-dung-classic-the-thao-hang-chinh-hang-keep-fly-viet-nam-tui-dung-dung-the-thao.jpg', 2, 0, 10, 2337, 163, 12, 70000, 0, 0, 70, NULL, '2023-11-25 08:36:54', '2023-11-25 08:40:47', '2023-11-25'),
-(116, 'Xe đạp thể thao', 'xe-dap-the-thao', 'Xe đạp thể thao còn mới như hình', '2023-11-25__405554027-663204732685236-1270717472866750588-n.jpg', 2, 0, 10, 2346, 164, 12, 2000000, 0, 0, 70, NULL, '2023-11-25 08:40:24', '2023-11-25 08:40:39', '2023-11-25'),
+(116, 'Xe đạp thể thao', 'xe-dap-the-thao', 'Xe đạp thể thao còn mới như hình', '2023-11-25__405554027-663204732685236-1270717472866750588-n.jpg', 3, 0, 10, 2346, 164, 12, 2000000, 0, 0, 70, NULL, '2023-11-25 08:40:24', '2024-06-20 14:39:45', '2023-11-25'),
 (117, 'Balo doanh nhân cao cấp công sở', 'balo-doanh-nhan-cao-cap-cong-so', 'Kích thước rất lớn, đựng nhiều đồ: 33x44x14 cm.\r\nCổng sạc USB bên ngoài.\r\nNhiều ngăn, nhiều chức năng.', '2023-11-25__z4913731686140-1c53640cd5bf8c5b783e6b902cd1bbb0.jpg', 2, 0, 3, 2337, 163, 12, 30000, 0, 0, 72, NULL, '2023-11-25 08:47:33', '2023-11-25 08:51:00', '2023-11-25'),
 (118, 'Túi đựng phụ kiện WIWU', 'tui-dung-phu-kien-wiwu', 'Thiết kế nhỏ gọn, thuận tiện di chuyển.\r\nKích thước túi : 17 cm x 9 cm x 1,5 cm', '2023-11-25__347582057-817029986662679-2549210708895948409-n.jpg', 2, 0, 3, 2348, 164, 12, 20000, 0, 0, 72, NULL, '2023-11-25 08:48:29', '2023-11-25 08:50:50', '2023-11-25'),
 (119, 'Máy Tính Học Sinh Casio FX-570ES PLUS', 'may-tinh-hoc-sinh-casio-fx-570es-plus', 'Có 417 tính năng vượt trội, giúp giải quyết hầu hết các dạng toán khó.\r\nblue-check\r\nHiển thị dạng biểu thức tự nhiên, tiện lợi trong tính toán.', '2023-11-25__379080788-1389057715012404-3568535671543162566-n.jpg', 2, 0, 3, 2348, 164, 12, 250000, 0, 0, 72, NULL, '2023-11-25 08:49:23', '2023-11-25 08:50:41', '2023-11-25'),
@@ -1639,39 +1622,45 @@ INSERT INTO `products` (`id`, `name`, `slug`, `description`, `avatar`, `status`,
 (122, 'Ba lo hình vợt cầu long', 'ba-lo-hinh-vot-cau-long', 'Ba lo hình vợt cầu long\r\nBa lo hình vợt cầu long', '2023-11-25__vot-cau-long-yonex-nanoray-z-speed.jpg', -1, 0, 3, 2338, 163, 12, 130000, 0, 0, 72, NULL, '2023-11-25 08:52:10', '2023-11-25 08:52:25', '2023-11-25'),
 (123, 'Bếp gas mini 100% Inox chống cháy nổ tiết kiệm ga', 'bep-gas-mini-100-inox-chong-chay-no-tiet-kiem-ga', 'Thiết kế chống cháy nổ và tiết kiệm gas, đảm bảo an toàn.\r\nblue-check\r\nThiết kế thông gió 4 mặt và chân kiềng 2 cấp giảm nguy cơ nổ lon gas.', '2023-11-25__tai-xuong.jpg', 1, 0, 4, 2338, 163, 12, 50000, 0, 0, 71, NULL, '2023-11-25 08:54:25', '2023-11-25 08:59:31', '2023-11-25'),
 (124, 'Máy lọc nước RO Hòa Phát', 'may-loc-nuoc-ro-hoa-phat', 'Máy lọc nước RO Hòa Phát với hệ thống 10 lõi, trong đó màng lọc RO 75 GPD được sản xuất tại Hàn Quốc', '2023-11-25__tai-xuong.jpg', -1, 0, 4, 2375, 166, 12, 1000000, 0, 0, 71, NULL, '2023-11-25 08:55:26', '2023-11-25 09:00:45', '2023-11-25'),
-(125, 'Nồi Cơm Điện Kim Cương 0,6 lít', 'noi-com-dien-kim-cuong-06-lit', 'Nồi cơm nắp rời lít Kim Cương với kiểu dáng xinh xắn cùng bảng điều khiển với nút gạt nhỏ nhắn và 2 đèn báo chế độ dễ thương mang lại một thiết kế trẻ trung, đáng yêu giúp ngôi nhà bạn trở nên sáng sủa, thời trang hơn.', '2023-11-25__b9f94606cecd3af9e5de7882cef575f7-2821868871477191288.jpg', 2, 0, 4, 2347, 164, 12, 180000, 0, 0, 71, NULL, '2023-11-25 08:56:44', '2023-11-25 09:00:35', '2023-11-25'),
+(125, 'Nồi Cơm Điện Kim Cương 0,6 lít', 'noi-com-dien-kim-cuong-06-lit', 'Nồi cơm nắp rời lít Kim Cương với kiểu dáng xinh xắn cùng bảng điều khiển với nút gạt nhỏ nhắn và 2 đèn báo chế độ dễ thương mang lại một thiết kế trẻ trung, đáng yêu giúp ngôi nhà bạn trở nên sáng sủa, thời trang hơn.', '2023-11-25__b9f94606cecd3af9e5de7882cef575f7-2821868871477191288.jpg', 3, 0, 4, 2347, 164, 12, 180000, 0, 0, 71, NULL, '2023-11-25 08:56:44', '2024-06-20 11:34:54', '2023-11-25'),
 (126, 'Tủ lạnh Aqua 90 lít', 'tu-lanh-aqua-90-lit', 'ủ lạnh Aqua 90 lít AQR-D99FA(BS) thuộc dòng tủ lạnh mini có thiết kế nhỏ gọn, phù hợp với những không gian vừa và nhỏ. Với kiểu dáng nhỏ gọn', '2023-11-25__loyalty-1698113809813pmfjz.jpg', 2, 0, 4, 2355, 165, 12, 1200000, 0, 0, 71, NULL, '2023-11-25 08:58:56', '2023-11-25 09:00:16', '2023-11-25'),
 (127, 'Tặng con mèo cho mọi người', 'tang-con-meo-cho-moi-nguoi', 'Tặng con mèo cho mọi người khu vực Ninh Kiều Cần Thơ', '2023-11-25__7ec00434ada41d5c9601651c23cdc0d4-2841894840628744713.jpg', 2, 0, 11, 2374, 166, 12, 10000, 0, 0, 71, NULL, '2023-11-25 09:02:15', '2023-11-25 09:02:29', '2023-11-25'),
 (128, 'Giáo trình quản trị hệ thống CT179', 'giao-trinh-quan-tri-he-thong-ct179', 'Giáo trình quản trị hệ thống CT179 như hình bên dưới', '2023-11-26__z4913685766732-23d58d92e851b0c79ad8728f24c11a14.jpg', 2, 0, 2, 2372, 166, 12, 10000, 0, 0, 70, NULL, '2023-11-26 00:32:27', '2023-11-26 00:37:29', '2023-11-26'),
 (129, 'Giáo trình phân tích và thiết kế thuật toán', 'giao-trinh-phan-tich-va-thiet-ke-thuat-toan', 'Giáo trình phân tích và thiết kế thuật toán', '2023-11-26__z4913678822977-65f234200ad53c418a5893e660b462e0.jpg', 2, 0, 2, 2373, 166, 12, 10000, 0, 0, 70, NULL, '2023-11-26 00:33:25', '2023-11-26 00:38:13', '2023-11-26'),
-(130, 'Giáo trình tin học căn bản', 'giao-trinh-tin-hoc-can-ban', 'Giáo trình tin học căn bản', '2023-11-26__tinhoccanban.jpg', 2, 0, 2, 2375, 166, 12, 10000, 0, 0, 70, NULL, '2023-11-26 00:36:39', '2023-11-26 00:36:53', '2023-11-26'),
+(130, 'Giáo trình tin học căn bản', 'giao-trinh-tin-hoc-can-ban', 'Giáo trình tin học căn bản', '2023-11-26__tinhoccanban.jpg', 3, 0, 2, 2375, 166, 12, 10000, 0, 0, 70, NULL, '2023-11-26 00:36:39', '2024-06-20 14:39:45', '2023-11-26'),
 (131, 'Giáo trình Phân tích thiết kế hệ thống thông tin', 'giao-trinh-phan-tich-thiet-ke-he-thong-thong-tin', 'Giáo trình Phân tích thiết kế hệ thống thông tin', '2023-11-26__z4913686996220-69e82ada9821386b75799e39ffc8b338.jpg', 2, 0, 2, 2348, 164, 12, 20000, 0, 0, 72, NULL, '2023-11-26 00:39:46', '2023-11-26 00:41:35', '2023-11-26'),
-(132, 'Giáo trình Mạng máy tính', 'giao-trinh-mang-may-tinh', 'Giáo trình Mạng máy tính', '2023-11-26__z4913684412906-7c89d9ead660f29dad563831b2e10243.jpg', 2, 0, 2, 2347, 164, 12, 10000, 0, 0, 72, NULL, '2023-11-26 00:40:21', '2023-11-26 00:41:26', '2023-11-26'),
+(132, 'Giáo trình Mạng máy tính', 'giao-trinh-mang-may-tinh', 'Giáo trình Mạng máy tính', '2023-11-26__z4913684412906-7c89d9ead660f29dad563831b2e10243.jpg', 3, 0, 2, 2347, 164, 12, 10000, 0, 0, 72, NULL, '2023-11-26 00:40:21', '2024-06-20 11:51:19', '2023-11-26'),
 (133, 'Giáo trình Mac - Lenin', 'giao-trinh-mac-lenin', 'Giáo trình Mac - Lenin còn mới', '2023-11-26__400871007-1048486566354240-47482619861037187-n.jpg', 2, 0, 2, 2347, 164, 12, 30000, 0, 0, 72, NULL, '2023-11-26 00:41:03', '2023-11-26 00:41:17', '2023-11-26'),
 (134, 'Giáo trình Lý thuyết đồ thị', 'giao-trinh-ly-thuyet-do-thi', 'Giáo trình Lý thuyết đồ thị', '2023-11-26__z4913693198436-7cc437c6502c2dbd64cd550a8f43c426.jpg', 2, 0, 2, 2377, 167, 12, 20000, 0, 0, 73, NULL, '2023-11-26 00:42:57', '2023-11-26 00:45:12', '2023-11-26'),
 (135, 'Giáo trình Luật Tố Tụng Hình Sự Việt Nam', 'giao-trinh-luat-to-tung-hinh-su-viet-nam', 'Giáo trình Luật Tố Tụng Hình Sự Việt Nam', '2023-11-26__luattotung.jpg', 2, 0, 2, 2373, 166, 12, 40000, 0, 0, 73, NULL, '2023-11-26 00:44:05', '2023-11-26 00:45:05', '2023-11-26'),
-(136, 'Giáo trình Lịch sử đảng cộng sản Việt Nam', 'giao-trinh-lich-su-dang-cong-san-viet-nam', 'Giáo trình Lịch sử đảng cộng sản Việt Nam', '2023-11-26__z4913681133431-8581a74a48c60f0c655499671822667d.jpg', 2, 0, 2, 2357, 165, 12, 20000, 0, 0, 73, NULL, '2023-11-26 00:44:47', '2023-11-26 00:44:57', '2023-11-26'),
-(137, 'Giáo trình Kỹ năng học đại học', 'giao-trinh-ky-nang-hoc-dai-hoc', 'Giáo trình Kỹ năng học đại học', '2023-11-26__z4913691782526-f45ad522264c6ffccaa144ec89d1111c.jpg', 2, 0, 2, 2355, 165, 12, 20000, 0, 0, 71, NULL, '2023-11-26 00:46:09', '2023-11-26 00:49:28', '2023-11-26'),
-(138, 'Giáo trình Kinh tế vĩ mô đã sử dụng giá 20k', 'giao-trinh-kinh-te-vi-mo-da-su-dung-gia-20k', 'Giáo trình Kinh tế vĩ mô', '2023-11-26__kinhtehocvimo2.jpg', 2, 0, 2, 2339, 163, 12, 20000, 0, 0, 71, NULL, '2023-11-26 00:47:34', '2023-11-26 00:49:20', '2023-11-26'),
-(139, 'Giáo trình Hóa học đại cương giá 30k', 'giao-trinh-hoa-hoc-dai-cuong-gia-30k', 'Giáo trình Hóa học đại cương', '2023-11-26__hoahocdaicuong.jpg', 2, 0, 2, 2380, 167, 12, 30000, 0, 0, 71, NULL, '2023-11-26 00:48:31', '2023-11-26 00:49:12', '2023-11-26');
+(136, 'Giáo trình Lịch sử đảng cộng sản Việt Nam', 'giao-trinh-lich-su-dang-cong-san-viet-nam', 'Giáo trình Lịch sử đảng cộng sản Việt Nam', '2023-11-26__z4913681133431-8581a74a48c60f0c655499671822667d.jpg', 3, 0, 2, 2357, 165, 12, 20000, 0, 0, 73, NULL, '2023-11-26 00:44:47', '2024-06-20 14:38:41', '2023-11-26'),
+(137, 'Giáo trình Kỹ năng học đại học', 'giao-trinh-ky-nang-hoc-dai-hoc', 'Giáo trình Kỹ năng học đại học', '2023-11-26__z4913691782526-f45ad522264c6ffccaa144ec89d1111c.jpg', 3, 0, 2, 2355, 165, 12, 20000, 0, 0, 71, NULL, '2023-11-26 00:46:09', '2024-06-20 11:43:00', '2023-11-26'),
+(138, 'Giáo trình Kinh tế vĩ mô đã sử dụng giá 20k', 'giao-trinh-kinh-te-vi-mo-da-su-dung-gia-20k', 'Giáo trình Kinh tế vĩ mô', '2023-11-26__kinhtehocvimo2.jpg', 3, 0, 2, 2339, 163, 12, 20000, 0, 0, 71, NULL, '2023-11-26 00:47:34', '2024-06-20 11:43:00', '2023-11-26'),
+(139, 'Giáo trình Hóa học đại cương giá 30k', 'giao-trinh-hoa-hoc-dai-cuong-gia-30k', 'Giáo trình Hóa học đại cương', '2023-11-26__hoahocdaicuong.jpg', 3, 0, 10, 2380, 167, 12, 30000, 0, 0, 71, NULL, '2023-11-26 00:48:31', '2024-06-20 14:33:34', '2023-11-26'),
+(140, 'demoapp cvbcvbcvb cvb', 'demoapp-cvbcvbcvb-cvb', 'fchbvn vbnb n cgv v cv vb cvbnvb', NULL, 3, 0, 11, 2788, 198, 15, 999999, 0, 0, 75, NULL, '2024-06-19 14:26:47', '2024-06-20 04:36:26', '2024-06-19'),
+(142, 'vvvvvvvvvvvv v c sdf xzccxzzxc', 'vvvvvvvvvvvv-v-c-sdf-xzccxzzxc', 'xvxcvxcvxcv dvcsdvdsf', '2024-06-20__2023-07-13-avatar-admin.png', 2, 0, 9, 2606, 186, 14, 111111, 0, 0, 76, NULL, '2024-06-20 04:41:25', '2024-06-20 04:42:13', '2024-06-20'),
+(143, 'ffffffffff dasasdf dzzxxzvc', 'ffffffffff-dasasdf-dzzxxzvc', 'zxcvcx zdczv zdcvzxcv', '2024-06-20__anh-khung-anh-091342092-1.png', -1, 0, 4, 2607, 186, 14, 888888, 0, 0, 76, NULL, '2024-06-20 06:26:22', '2024-06-20 11:40:36', '2024-06-20'),
+(144, 'xcgv  fxvb xfcvbcxvb', 'xcgv-fxvb-xfcvbcxvb', 'dfgdb cbcvbc cvbcvb dfggfd iko', '2024-06-20__download.jpg', 1, 0, 9, 2949, 212, 16, 333333, 0, 0, 76, NULL, '2024-06-20 06:27:20', '2024-06-20 06:27:20', '2024-06-20'),
+(145, 'demo đăng bài sp', 'demo-dang-bai-sp', 'ok..... abcd....... vvvvvvvvvvvvvvvv', '2024-06-20__anh-khung-anh-091342092-1.png', 2, 0, 3, 945, 59, 3, 90000, 0, 0, 40, NULL, '2024-06-20 11:38:41', '2024-06-20 11:40:22', '2024-06-20'),
+(146, 'bút chì abcdefgh', 'demo-dang-ban-sp', 'demo dang ban sp abcd........', '2024-06-20__download.jpg', 2, 0, 4, 2348, 164, 12, 5000, 0, 0, 71, NULL, '2024-06-20 14:34:53', '2024-06-20 14:38:12', '2024-06-20');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `products_images`
+-- Table structure for table `products_images`
 --
 
 CREATE TABLE `products_images` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `path` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `path` varchar(255) DEFAULT NULL,
   `product_id` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `products_images`
+-- Dumping data for table `products_images`
 --
 
 INSERT INTO `products_images` (`id`, `name`, `path`, `product_id`, `created_at`, `updated_at`) VALUES
@@ -1861,12 +1850,23 @@ INSERT INTO `products_images` (`id`, `name`, `path`, `product_id`, `created_at`,
 (186, 'z4913691782526_f45ad522264c6ffccaa144ec89d1111c.jpg', '2023-11-26__z4913691782526-f45ad522264c6ffccaa144ec89d1111cjpg.jpg', 137, '2023-11-26 00:46:09', NULL),
 (187, 'kinhtehocvimo2.jpg', '2023-11-26__kinhtehocvimo2jpg.jpg', 138, '2023-11-26 00:47:34', NULL),
 (188, 'hoahocdaicuong.jpg', '2023-11-26__hoahocdaicuongjpg.jpg', 139, '2023-11-26 00:48:31', NULL),
-(189, 'hoahocdaicuoong2.jpg', '2023-11-26__hoahocdaicuoong2jpg.jpg', 139, '2023-11-26 00:48:31', NULL);
+(189, 'hoahocdaicuoong2.jpg', '2023-11-26__hoahocdaicuoong2jpg.jpg', 139, '2023-11-26 00:48:31', NULL),
+(190, 'x1.PNG', '2024-06-19__x1png.PNG', 140, '2024-06-19 14:26:47', NULL),
+(191, 'x2.PNG', '2024-06-19__x2png.PNG', 140, '2024-06-19 14:26:47', NULL),
+(192, '2024-06-19__x2png.PNG', '2024-06-20__2024-06-19-x2pngpng.PNG', 141, '2024-06-20 04:38:08', NULL),
+(193, '2023-07-13__avatar-customer-2png.png', '2024-06-20__2023-07-13-avatar-customer-2pngpng.png', 142, '2024-06-20 04:41:25', NULL),
+(194, 'anh-khung-anh_091342092 (1).png', '2024-06-20__anh-khung-anh-091342092-1png.png', 143, '2024-06-20 06:26:22', NULL),
+(195, 'download.jpg', '2024-06-20__download.jpg', 144, '2024-06-20 06:27:20', NULL),
+(196, 'download.jpg', '2024-06-20__download.jpg', 145, '2024-06-20 11:38:41', NULL),
+(197, 'background-banner-3d_014238820.jpg', '2024-06-20__background-banner-3d-014238820jpg.jpg', 145, '2024-06-20 11:38:41', NULL),
+(198, 'anh-khung-anh_091342092 (1).png', '2024-06-20__anh-khung-anh-091342092-1png.png', 146, '2024-06-20 14:34:53', NULL),
+(199, 'download.jpg', '2024-06-20__download.jpg', 146, '2024-06-20 14:34:53', NULL),
+(200, 'background-banner-3d_014238820.jpg', '2024-06-20__background-banner-3d-014238820jpg.jpg', 146, '2024-06-20 14:34:53', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `profile`
+-- Table structure for table `profile`
 --
 
 CREATE TABLE `profile` (
@@ -1878,11 +1878,11 @@ CREATE TABLE `profile` (
   `status` int(11) DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `address_detail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `address_detail` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `profile`
+-- Dumping data for table `profile`
 --
 
 INSERT INTO `profile` (`id`, `user_id`, `province_id`, `district_id`, `ward_id`, `status`, `created_at`, `updated_at`, `address_detail`) VALUES
@@ -1902,26 +1902,29 @@ INSERT INTO `profile` (`id`, `user_id`, `province_id`, `district_id`, `ward_id`,
 (26, 13, 12, 162, 2325, 1, '2023-11-22 09:28:08', NULL, '230'),
 (27, 69, 12, 167, 2378, 1, '2023-11-25 02:09:02', NULL, '22'),
 (28, 70, 12, 162, 2325, 1, '2023-11-25 02:19:13', NULL, '230'),
-(29, 71, 55, 630, 9948, 1, '2023-11-25 02:22:18', NULL, '84'),
+(29, 71, 55, 630, 9948, 0, '2023-11-25 02:22:18', '2024-06-20 14:35:56', '84'),
 (30, 72, 30, 389, 6284, 1, '2023-11-25 02:23:54', NULL, '67'),
 (31, 73, 12, 167, 2377, 1, '2023-11-25 02:25:02', NULL, '65'),
-(32, 74, 4, 64, 981, 1, '2023-11-25 02:37:51', NULL, NULL);
+(32, 74, 4, 64, 981, 1, '2023-11-25 02:37:51', NULL, NULL),
+(33, 75, 5, 74, 1132, 1, '2024-06-19 14:04:14', NULL, 'fddf'),
+(34, 76, 10, 146, 2131, 1, '2024-06-19 14:31:22', NULL, 'dothanhnhan20k'),
+(35, 71, 6, 85, 1292, 1, '2024-06-20 14:35:56', NULL, 'abcd.............');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `provinces`
+-- Table structure for table `provinces`
 --
 
 CREATE TABLE `provinces` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `code` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `slug` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
+  `name` varchar(50) DEFAULT NULL,
+  `code` varchar(20) DEFAULT NULL,
+  `slug` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `provinces`
+-- Dumping data for table `provinces`
 --
 
 INSERT INTO `provinces` (`id`, `name`, `code`, `slug`) VALUES
@@ -1992,21 +1995,21 @@ INSERT INTO `provinces` (`id`, `name`, `code`, `slug`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `recharge`
+-- Table structure for table `recharge`
 --
 
 CREATE TABLE `recharge` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` int(11) DEFAULT 0,
   `total_money` int(11) NOT NULL DEFAULT 0,
-  `code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
   `status` int(11) DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `recharge`
+-- Dumping data for table `recharge`
 --
 
 INSERT INTO `recharge` (`id`, `user_id`, `total_money`, `code`, `status`, `created_at`, `updated_at`) VALUES
@@ -2019,35 +2022,38 @@ INSERT INTO `recharge` (`id`, `user_id`, `total_money`, `code`, `status`, `creat
 (10, 68, 30000, NULL, 0, '2023-11-17 03:42:43', '2023-11-17 03:42:43'),
 (11, 68, 35000, NULL, 0, '2023-11-17 03:43:25', '2023-11-17 03:43:25'),
 (12, 51, 10000, NULL, 0, '2023-11-17 12:04:32', '2023-11-17 12:04:32'),
-(13, 68, 20000, NULL, 0, '2023-11-18 00:05:30', '2023-11-18 00:05:30');
+(13, 68, 20000, NULL, 0, '2023-11-18 00:05:30', '2023-11-18 00:05:30'),
+(14, 40, 1000000, NULL, 0, '2024-06-20 11:35:43', '2024-06-20 11:35:43'),
+(15, 71, 2000000, NULL, 0, '2024-06-20 11:50:31', '2024-06-20 11:50:31');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `guard_name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `description`, `created_at`, `updated_at`) VALUES
 (1, 'supper_admin', 'web', 'Toàn quyền', '2023-05-15 02:25:33', '2023-07-12 14:23:09'),
-(4, 'kiemduyetvien', 'web', 'Kiểm duyệt viên để duyệt bài đăng từ sinh viên', '2023-10-06 15:10:42', '2023-11-25 10:31:36');
+(4, 'kiemduyetvien', 'web', 'Kiểm duyệt viên để duyệt bài đăng từ sinh viên', '2023-10-06 15:10:42', '2023-11-25 10:31:36'),
+(5, 'xx', 'xx', 'xx', '2024-06-20 05:55:21', '2024-06-20 05:55:21');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `role_has_permissions`
+-- Table structure for table `role_has_permissions`
 --
 
 CREATE TABLE `role_has_permissions` (
@@ -2056,7 +2062,7 @@ CREATE TABLE `role_has_permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `role_has_permissions`
+-- Dumping data for table `role_has_permissions`
 --
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
@@ -2071,13 +2077,13 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `shopping_cart`
+-- Table structure for table `shopping_cart`
 --
 
 CREATE TABLE `shopping_cart` (
-  `identifier` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `instance` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `identifier` varchar(255) NOT NULL,
+  `instance` varchar(255) NOT NULL,
+  `content` longtext NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2085,32 +2091,30 @@ CREATE TABLE `shopping_cart` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `slides`
+-- Table structure for table `slides`
 --
 
 CREATE TABLE `slides` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `link` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `status` tinyint(4) DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `slides`
+-- Dumping data for table `slides`
 --
 
-INSERT INTO `slides` (`id`, `avatar`, `link`, `name`, `status`, `created_at`, `updated_at`) VALUES
-(1, '2023-08-27__chaonamhocmoi.png', 'https://www.facebook.com/CTUDHCT/', 'Năm học mới', 1, '2023-05-12 03:32:55', '2023-08-27 02:39:10'),
-(2, '2023-08-27__slideweb-chontsvnhngiucnbit.png', 'https://tansinhvien.ctu.edu.vn/', 'Chào mừng K49', 1, '2023-05-12 03:33:06', '2023-08-27 02:38:46'),
-(3, '2023-08-27__pketquatuyensinh.png', 'https://kqts.ctu.edu.vn/', 'Kết quả tuyển sinh', 1, '2023-05-12 03:33:19', '2023-08-27 02:38:17');
-
+INSERT INTO slides (id, avatar, link, name, status, created_at, updated_at) VALUES
+(1, 'ueh-1.jpg', '', 'Năm học mới', 1, '2023-05-12 03:32:55', '2023-08-27 02:39:10'),
+(2, 'ueh-2.jpg', '', 'Chào mừng', 1, '2023-05-12 03:33:06', '2023-08-27 02:38:46');
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_statistical`
+-- Table structure for table `tbl_statistical`
 --
 
 CREATE TABLE `tbl_statistical` (
@@ -2122,10 +2126,10 @@ CREATE TABLE `tbl_statistical` (
   `total_product` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_statistical`
+-- Dumping data for table `tbl_statistical`
 --
 
 INSERT INTO `tbl_statistical` (`id`, `order_date`, `cancel`, `finish`, `success`, `total_product`, `created_at`, `updated_at`) VALUES
@@ -2141,12 +2145,15 @@ INSERT INTO `tbl_statistical` (`id`, `order_date`, `cancel`, `finish`, `success`
 (93, '2023-11-18', 1, 5, 19, 27, '2023-11-17 23:47:34', '2023-11-18 00:27:14'),
 (94, '2023-11-22', 2, 10, 16, 26, '2023-11-22 00:11:31', '2023-11-25 03:09:59'),
 (107, '2023-11-25', 5, 1, 20, 29, '2023-11-25 03:40:41', '2023-11-25 09:02:29'),
-(108, '2023-11-26', NULL, NULL, 12, 12, '2023-11-26 00:32:27', '2023-11-26 00:49:28');
+(108, '2023-11-26', NULL, 2, 12, 12, '2023-11-26 00:32:27', '2024-06-20 14:38:41'),
+(109, '2024-06-19', NULL, 1, 1, 1, '2024-06-19 14:26:47', '2024-06-20 04:36:26'),
+(110, '2024-06-20', 1, NULL, 3, 5, '2024-06-20 04:38:08', '2024-06-20 14:38:12'),
+(111, '2024-06-20', NULL, 0, NULL, NULL, '2024-06-20 14:33:34', '2024-06-20 14:33:34');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `transactions`
+-- Table structure for table `transactions`
 --
 
 CREATE TABLE `transactions` (
@@ -2154,25 +2161,25 @@ CREATE TABLE `transactions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `tr_user_id` int(11) DEFAULT 0 COMMENT 'Nguoi mua\r\n',
-  `tr_total` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '0',
-  `tr_note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tr_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tr_phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tr_total` varchar(255) DEFAULT '0',
+  `tr_note` varchar(255) DEFAULT NULL,
+  `tr_address` varchar(255) DEFAULT NULL,
+  `tr_phone` varchar(255) DEFAULT NULL,
   `tr_status` tinyint(4) DEFAULT 0,
   `tr_type_payment` int(11) DEFAULT 0,
   `tr_user_sale` int(11) DEFAULT 0 COMMENT 'Nguoi ban'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `transactions`
+-- Dumping data for table `transactions`
 --
 
 INSERT INTO `transactions` (`id`, `created_at`, `updated_at`, `tr_user_id`, `tr_total`, `tr_note`, `tr_address`, `tr_phone`, `tr_status`, `tr_type_payment`, `tr_user_sale`) VALUES
 (111, '2023-09-25 06:34:57', '2023-09-25 06:34:57', 38, '1167000', 'aaabc Nhằm bổ sung những kiến thức cần thiết cho các bạn học viên/sinh viên có đam mê kinh doanh và lĩnh vực bán hàng, CENTREC tiếp tục tổ chức chương trình CENTREC ECO CONNECT Kỳ 2, với chủ đề KỸ NĂNG BÁN HÀNG (Thông tin chi tiết trong file kèm theo emai', '203 - Thới Khánh', '0888399865', 0, 0, 0),
 (114, '2023-09-25 06:45:58', '2023-09-25 06:45:58', 38, '1167000', NULL, NULL, '0982288888', 0, 0, 0),
 (115, '2023-09-25 07:17:43', '2023-09-25 07:17:43', 38, '1167000', NULL, '203 - Thới Khánh', '0888399865', 0, 0, 0),
-(116, '2023-09-25 07:36:17', '2023-09-25 07:36:17', 38, '980000', 'aaaa', '203 - Thới Khánh', '0888399865', 0, 0, 0),
-(117, '2023-10-21 02:55:03', '2023-10-21 02:55:03', 13, '980000', 'Giao hàng nhanh nhanh', '203 - Vĩnh Long', '088839112', 0, 0, 43),
+(116, '2023-09-25 07:36:17', '2024-06-20 11:59:23', 38, '980000', 'aaaa', '203 - Thới Khánh', '0888399865', 1, 0, 0),
+(117, '2023-10-21 02:55:03', '2024-06-20 11:59:20', 13, '980000', 'Giao hàng nhanh nhanh', '203 - Vĩnh Long', '088839112', 1, 0, 43),
 (118, '2023-10-21 03:22:13', '2023-10-23 07:45:33', 13, '980000', '203 - Thới Khánh - Ôn Môn', '203 - Thới Khánh - Ôn Môn', '0888399865', 1, 1, 51),
 (119, '2023-10-25 01:55:22', '2023-11-16 12:01:59', 13, '200000', NULL, '203 - Thới Khánh test thêm user sale', '0888399865', 3, 1, 44),
 (120, '2023-10-25 08:19:19', '2023-10-25 08:42:28', 13, '22000', NULL, '203 - Thới Khánh', '0888399865', 1, 0, 0),
@@ -2184,63 +2191,70 @@ INSERT INTO `transactions` (`id`, `created_at`, `updated_at`, `tr_user_id`, `tr_
 (126, '2023-11-16 11:46:04', '2023-11-16 11:46:04', 68, '20000', 'oki', '9aaabb - Hòa Bình - AYun Pa - Gia Lai', '0888399865', 0, 1, 51),
 (127, '2023-11-16 11:47:16', '2023-11-16 11:47:16', 68, '20000', NULL, '9aaabb - Hòa Bình - AYun Pa - Gia Lai', '0888399865', 0, 1, 51),
 (128, '2023-11-16 11:47:55', '2023-11-17 08:52:11', 68, '20000', 'Oki nef', '9aaabb - Hòa Bình - AYun Pa - Gia Lai', '0888399865', 3, 1, 51),
-(129, '2023-11-16 12:12:06', '2023-11-17 00:16:40', 68, '100000', NULL, '9aaabb - Hòa Bình - AYun Pa - Gia Lai', '0888399865', 1, 1, 44),
+(129, '2023-11-16 12:12:06', '2024-06-20 11:44:55', 68, '100000', NULL, '9aaabb - Hòa Bình - AYun Pa - Gia Lai', '0888399865', 3, 1, 44),
 (130, '2023-11-17 09:54:13', '2023-11-17 10:00:54', 68, '20000', 'Thanh toán online', '23 - Hòa Bình - AYun Pa - Gia Lai', '0888399865', 4, 0, 51),
 (131, '2023-11-17 11:56:14', '2023-11-17 12:03:58', 68, '30000', NULL, '11222 - Cổ Nhuế 1 - Bắc Từ Liêm - Hà Nội', '0888399865', 4, 0, 51),
 (132, '2023-11-17 23:52:33', '2023-11-17 23:54:29', 68, '70000', 'Giao hàng nhanh', '12 - Cổ Nhuế 1 - Bắc Từ Liêm - Hà Nội', '0888399865', 4, 0, 51),
-(133, '2023-11-18 00:29:43', '2023-11-18 00:32:38', 68, '50000', 'giao hang', '9 - Hòa Bình - AYun Pa - Gia Lai', '0888399865', 4, 0, 51);
+(133, '2023-11-18 00:29:43', '2023-11-18 00:32:38', 68, '50000', 'giao hang', '9 - Hòa Bình - AYun Pa - Gia Lai', '0888399865', 4, 0, 51),
+(134, '2024-06-19 14:43:55', '2024-06-20 11:42:58', 35, '999999', 'fdsdfg', 'khu pho 3 an phu quan 2', '0869859434', 1, 1, 75),
+(135, '2024-06-20 11:34:19', '2024-06-20 14:35:19', 40, '2040000', 'ok', 'khu pho 3 an phu quan 2', '0988222333', 2, 0, 71),
+(136, '2024-06-20 11:34:54', '2024-06-20 11:49:01', 40, '2180000', 'ok', 'khu pho 3 an phu quan 2', '0988222333', 3, 1, 71),
+(137, '2024-06-20 11:51:19', '2024-06-20 12:08:04', 71, '10000', 'ok', '84 - Ngan Dừa - Hồng Dân - Bạc Liêu', '0988678954', 3, 1, 72),
+(138, '2024-06-20 14:31:54', '2024-06-20 14:39:45', 71, '2010000', 'ok', '84 - Ngan Dừa - Hồng Dân - Bạc Liêu', '0988678954', 1, 0, 70),
+(139, '2024-06-20 14:32:22', '2024-06-20 14:40:45', 71, '50000', 'ok', '84 - Ngan Dừa - Hồng Dân - Bạc Liêu', '0988678954', 3, 1, 73);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `status` tinyint(4) DEFAULT 0,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `active_status` tinyint(1) NOT NULL DEFAULT 0,
   `dark_mode` tinyint(1) NOT NULL DEFAULT 0,
-  `messenger_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `messenger_color` varchar(255) DEFAULT NULL,
   `total_money` int(11) DEFAULT 0,
   `last_login_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `address`, `gender`, `phone`, `avatar`, `status`, `remember_token`, `created_at`, `updated_at`, `active_status`, `dark_mode`, `messenger_color`, `total_money`, `last_login_at`) VALUES
-(13, 'Admin hệ thống', 'admin@gmail.com', NULL, '$2y$10$K.1eH88/zLbBw9Keiu6Sr.vy9HjQla8ZY3/gLPMMKQxGrsfi.39my', 'Cần Thơ', NULL, '0869888999', '2023-11-25__avatar-stu-1.jpg', 2, NULL, '2023-05-09 02:14:26', '2023-11-26 00:50:59', 0, 0, NULL, 0, '2023-11-26 00:50:59'),
-(35, 'Kiểm duyệt viên', 'thang259a3@gmail.com', NULL, '$2y$10$H5F0WuJ9HRu9yNbnQ/BJYuc/TnVpxnQIyLDqKzlo2XXiVwfLPfP4.', NULL, NULL, '0869859434', '2023-05-27__z4100906407156-02e7d1453ce78c88fc8de516a28971f5.jpg', 2, NULL, '2023-05-16 04:32:56', '2023-09-22 08:11:07', 0, 0, NULL, 0, NULL),
-(38, 'Sinh viên mua', 'thangb1906766@gmail.com', NULL, '$2y$10$pR906RdNr0Hp0uwloow4mubNSlOT3wwHYky.JqS4Un3W0lLTZKoYW', NULL, NULL, '0982288888', '2023-05-31__c5fcddf9b163713d2872.jpg', 2, NULL, '2023-05-31 10:21:28', '2023-11-11 08:45:24', 1, 0, NULL, 0, NULL),
-(40, 'Sinh viên bán 1', 'thanggpt1@gmail.com', NULL, '$2y$10$8ZcF7vJKGFyYbTUYbXGVmOnxtVTUVs4Dl/r09ZjuBHJwgCtwhc0.y', NULL, NULL, '0988222333', '2023-09-22__z4716886991307-6cbdabc053300f6724454b6abca63b69.jpg', 2, NULL, '2023-05-31 10:27:46', '2023-11-25 03:18:24', 0, 0, NULL, 0, '2023-11-25 03:18:24'),
-(43, 'Sinh viên bán 2', 'minhthangn42023@gmail.com', NULL, '$2y$10$/rmUqdl/WVFqxQ9dUCbeQezeGnzRFdJMb9jYeoxUfriFKxS.fIjZG', NULL, NULL, '0869555333', '2023-07-12__avata.jpg', 2, NULL, '2023-07-12 15:08:42', '2023-11-25 03:19:10', 0, 0, NULL, 0, '2023-11-25 03:19:10'),
-(44, 'Nhật Trường N4', 'nhattruongn42023@gmail.com', NULL, '$2y$10$694yJu2JsGP9Xlfc6M0dD.IBxsHvKlxtpq7MvvdTX1yCKGaZ0BRL.', NULL, NULL, '0859888555', '2023-07-13__images.png', 2, NULL, '2023-07-13 15:05:48', '2023-11-25 03:16:36', 0, 0, NULL, 0, '2023-11-25 03:16:36'),
-(48, 'Lê Minh Thắng Admin', 'lmthang0110@gmail.com', NULL, '$2y$10$m4R9bdHnaeOEjHRwEZ2rl.2USR6S7x1JXtkYytqfTDWnN5DK7/l6S', NULL, NULL, '0888399865', '2023-10-14__avatar-stu-1.jpg', 2, NULL, '2023-10-04 04:51:34', '2023-11-25 02:18:08', 0, 0, NULL, 0, NULL),
-(51, 'Hà Trung Nghĩa Admin', 'trungnghian42023@gmail.com', NULL, '$2y$10$MfqMlpKT2a.Qg4toaTtzCunXPMLW1i1g3JfNiqArXSWwbAD2/h3Ya', NULL, NULL, '0888399865', '2023-10-14__avatar-stu-1.jpg', 2, NULL, '2023-10-14 03:53:02', '2023-11-25 02:22:59', 0, 0, NULL, 220000, '2023-11-23 10:54:01'),
-(68, 'Nhất Ngữ', 'adminnhatngu@gmail.com', NULL, '$2y$10$xI9lSEmuS0zWCmLt0F76F.eDdz34yMTOclytUX9jf0JGlyZHvUvQ.', NULL, NULL, '0888399865', '2023-11-14__394668946-672751901625893-8937842846901078239-n.jpg', 2, NULL, '2023-11-14 03:22:04', '2023-11-23 11:02:12', 0, 0, NULL, 125000, '2023-11-23 11:02:12'),
-(69, 'System kiểm duyệt viên', 'system@gmail.com', NULL, '$2y$10$8uEuiGVzE.ShBR971xfpoOWECmO0FSc7W7KvvHCX7yyTCFsKtvtKm', NULL, NULL, '0986777555', '2023-11-25__avatar-stu-2.jpg', 2, NULL, '2023-11-25 02:09:02', '2023-11-25 10:59:27', 0, 0, NULL, 0, '2023-11-25 10:59:27'),
-(70, 'Lê Minh Thắng', 'userleminhthang@gmail.com', NULL, '$2y$10$q8lIAeUgqZvfzai6PRG2degaOvZM98nTRWvZRg7gmGHTtBd3mK.kO', NULL, NULL, '0988666888', '2023-11-25__z4100906407156-02e7d1453ce78c88fc8de516a28971f5.jpg', 2, NULL, '2023-11-25 02:19:13', '2023-11-26 02:32:40', 0, 0, NULL, 0, '2023-11-26 02:32:40'),
-(71, 'Huỳnh Nhật Trường', 'userhuynhnhattruong@gmail.com', NULL, '$2y$10$BRXqX2kDZ3WTHsRK3J.hIuyPu6U5tG4Gsj4BOFE995TVzkZuzsAHi', NULL, NULL, '0988678954', '2023-11-25__avatarusserhnt.jpg', 2, NULL, '2023-11-25 02:22:18', '2023-11-26 00:50:34', 0, 0, NULL, 0, '2023-11-26 00:50:34'),
-(72, 'Hà Trung Nghĩa', 'userhatrungnghia@gmail.com', NULL, '$2y$10$oonrFEZ1uyvQ77wnHhOLducE/nymPNO21tfPSEMFqHFsqfZUaFzpq', NULL, NULL, '0865888333', '2023-11-25__avataruserhn.jpg', 2, NULL, '2023-11-25 02:23:54', '2023-11-26 00:41:49', 0, 0, NULL, 0, '2023-11-26 00:41:49'),
-(73, 'Cao Như Thuần', 'usercaonhuthuan@gmail.com', NULL, '$2y$10$l2mja1zPRYhDVujcIJthJOJFt75hZzfsyo8u1HvQgBjDSBTpuhs8S', NULL, NULL, '0869774632', '2023-11-25__avatarusercnt.jpg', 2, NULL, '2023-11-25 02:25:02', '2023-11-26 00:42:12', 0, 0, NULL, 0, '2023-11-26 00:42:12');
+(13, 'Admin hệ thống', 'admin@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', 'Cần Thơ', NULL, '0869888999', '2023-11-25__avatar-stu-1.jpg', 2, NULL, '2023-05-09 02:14:26', '2024-06-21 04:28:11', 0, 0, NULL, 0, '2024-06-21 04:28:11'),
+(35, 'Kiểm duyệt viên', 'kiemduyet@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0869859434', '2023-05-27__z4100906407156-02e7d1453ce78c88fc8de516a28971f5.jpg', 2, NULL, '2023-05-16 04:32:56', '2024-06-20 11:47:18', 0, 0, NULL, 0, '2024-06-20 11:47:18'),
+(38, 'Nguyễn Việt Bảo Trân', 'baotran@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0982288888', '2023-05-31__c5fcddf9b163713d2872.jpg', 2, NULL, '2023-05-31 10:21:28', '2023-11-11 08:45:24', 1, 0, NULL, 0, NULL),
+(40, 'Phan Thành Nhân', 'thanhnhan@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0988222333', '2024-06-20__background-banner-3d-014238820.jpg', 2, NULL, '2023-05-31 10:27:46', '2024-06-20 11:37:46', 0, 0, NULL, 1000000, '2024-06-20 11:37:46'),
+(43, 'Hoàng Phương', 'hoangphuong123@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0869555333', '2023-07-12__avata.jpg', 2, NULL, '2023-07-12 15:08:42', '2023-11-25 03:19:10', 0, 0, NULL, 0, '2023-11-25 03:19:10'),
+(44, 'Đỗ Trọng Hiếu', 'tronghieu@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0859888555', '2023-07-13__images.png', -1, NULL, '2023-07-13 15:05:48', '2024-06-20 14:39:05', 0, 0, NULL, 0, '2024-06-20 12:08:38'),
+(51, 'Vĩnh Hy', 'vinhhy10@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0888399865', '2023-10-14__avatar-stu-1.jpg', 2, NULL, '2023-10-14 03:53:02', '2024-06-20 12:05:18', 0, 0, NULL, 220000, '2024-06-20 12:05:18'),
+(68, 'Từ Thiên Gia Bảo', 'giabao@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0888399865', '2023-11-14__394668946-672751901625893-8937842846901078239-n.jpg', -1, NULL, '2023-11-14 03:22:04', '2024-06-20 11:41:49', 0, 0, NULL, 125000, '2023-11-23 11:02:12'),
+(69, 'System kiểm duyệt viên', 'system@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0986777555', '2023-11-25__avatar-stu-2.jpg', 2, NULL, '2023-11-25 02:09:02', '2024-06-20 11:46:00', 0, 0, NULL, 0, '2024-06-20 11:46:00'),
+(70, 'Lê Minh Thắng', 'leminhthang@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0988666888', '2023-11-25__z4100906407156-02e7d1453ce78c88fc8de516a28971f5.jpg', 2, NULL, '2023-11-25 02:19:13', '2024-06-20 11:48:25', 0, 0, NULL, 0, '2024-06-20 11:48:25'),
+(71, 'Đoàn Hoàng Lợi Nguyên', 'doanhoangloinguyen@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0988678954', '2024-06-20__background-banner-3d-014238820.jpg', 2, NULL, '2023-11-25 02:22:18', '2024-06-21 04:27:18', 0, 0, NULL, 2000000, '2024-06-21 04:27:18'),
+(72, 'Hà Hoàng Phúc', 'hoangphuc@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0865888333', '2023-11-25__avataruserhn.jpg', 2, NULL, '2023-11-25 02:23:54', '2024-06-20 12:07:48', 0, 0, NULL, 0, '2024-06-20 12:07:48'),
+(73, 'Cao Như Thuần', 'caonhuthuan@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0869774632', '2023-11-25__avatarusercnt.jpg', 2, NULL, '2023-11-25 02:25:02', '2024-06-20 14:41:19', 0, 0, NULL, 0, '2024-06-20 14:41:19'),
+(75, 'Trần Lê Hà My', 'hamy@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0364877525', '2024-06-19__01.png', 2, NULL, '2024-06-19 14:04:14', '2024-06-20 11:42:01', 0, 0, NULL, 0, '2024-06-19 14:27:36'),
+(76, 'Lê Nguyễn Quỳnh Nhi', 'quynhnhi@gmail.com', NULL, '$2y$10$PuUTaMf/68xsK.lACvm7cO7th0h8QjItg3E0.Jsj9AqYNVB44LRxK', NULL, NULL, '0364877521', '2024-06-19__01.png', 2, NULL, '2024-06-19 14:31:22', '2024-06-20 11:13:52', 0, 0, NULL, 0, '2024-06-20 11:13:52');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user_has_types`
+-- Table structure for table `user_has_types`
 --
 
 CREATE TABLE `user_has_types` (
@@ -2252,7 +2266,7 @@ CREATE TABLE `user_has_types` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `user_has_types`
+-- Dumping data for table `user_has_types`
 --
 
 INSERT INTO `user_has_types` (`id`, `user_id`, `user_type_id`, `created_at`, `updated_at`) VALUES
@@ -2261,32 +2275,33 @@ INSERT INTO `user_has_types` (`id`, `user_id`, `user_type_id`, `created_at`, `up
 (41, 38, 2, '2023-05-31 10:21:28', '2023-09-22 08:16:59'),
 (43, 40, 2, '2023-05-31 10:27:46', '2023-10-06 15:15:23'),
 (46, 43, 2, '2023-07-12 15:08:42', '2023-09-22 08:16:43'),
-(47, 44, 1, '2023-07-13 15:05:48', '2023-09-23 01:22:35'),
-(51, 48, 1, '2023-10-04 04:51:34', '2023-11-25 02:18:08'),
+(47, 44, 1, '2023-07-13 15:05:48', '2024-06-20 14:39:05'),
 (54, 51, 1, '2023-10-14 03:53:02', '2023-11-25 02:22:59'),
-(71, 68, 1, '2023-11-14 03:22:04', '2023-11-18 03:49:35'),
+(71, 68, 1, '2023-11-14 03:22:04', '2024-06-20 11:41:49'),
 (72, 69, 3, '2023-11-25 02:09:02', '2023-11-25 08:10:14'),
 (73, 70, 1, '2023-11-25 02:19:13', '2023-11-25 02:25:51'),
 (74, 71, 1, '2023-11-25 02:22:18', '2023-11-25 02:25:44'),
 (75, 72, 1, '2023-11-25 02:23:54', '2023-11-25 02:25:37'),
-(76, 73, 1, '2023-11-25 02:25:02', '2023-11-25 02:25:30');
+(76, 73, 1, '2023-11-25 02:25:02', '2023-11-25 02:25:30'),
+(78, 75, 1, '2024-06-19 14:04:14', '2024-06-20 11:42:01'),
+(79, 76, 1, '2024-06-19 14:31:22', '2024-06-20 05:57:26');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user_types`
+-- Table structure for table `user_types`
 --
 
 CREATE TABLE `user_types` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `user_types`
+-- Dumping data for table `user_types`
 --
 
 INSERT INTO `user_types` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
@@ -2297,20 +2312,20 @@ INSERT INTO `user_types` (`id`, `name`, `description`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wards`
+-- Table structure for table `wards`
 --
 
 CREATE TABLE `wards` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `slug` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `prefix` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(50) NOT NULL,
+  `slug` varchar(100) DEFAULT NULL,
+  `prefix` varchar(20) DEFAULT NULL,
   `province_id` int(10) UNSIGNED DEFAULT NULL,
   `district_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `wards`
+-- Dumping data for table `wards`
 --
 
 INSERT INTO `wards` (`id`, `name`, `slug`, `prefix`, `province_id`, `district_id`) VALUES
@@ -13609,90 +13624,90 @@ INSERT INTO `wards` (`id`, `name`, `slug`, `prefix`, `province_id`, `district_id
 (11283, 'Trung Phúc', 'trung-phuc', 'Xã', 63, 709);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `articles`
+-- Indexes for table `articles`
 --
 ALTER TABLE `articles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `articles_slug_unique` (`slug`);
 
 --
--- Chỉ mục cho bảng `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `categories_slug_unique` (`slug`);
 
 --
--- Chỉ mục cho bảng `ch_favorites`
+-- Indexes for table `ch_favorites`
 --
 ALTER TABLE `ch_favorites`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `ch_messages`
+-- Indexes for table `ch_messages`
 --
 ALTER TABLE `ch_messages`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `districts`
+-- Indexes for table `districts`
 --
 ALTER TABLE `districts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Chỉ mục cho bảng `jobs`
+-- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `jobs_queue_index` (`queue`);
 
 --
--- Chỉ mục cho bảng `menus`
+-- Indexes for table `menus`
 --
 ALTER TABLE `menus`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `menus_slug_unique` (`slug`);
 
 --
--- Chỉ mục cho bảng `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `model_has_permissions`
+-- Indexes for table `model_has_permissions`
 --
 ALTER TABLE `model_has_permissions`
   ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
   ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
 
 --
--- Chỉ mục cho bảng `model_has_roles`
+-- Indexes for table `model_has_roles`
 --
 ALTER TABLE `model_has_roles`
   ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
   ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
 
 --
--- Chỉ mục cho bảng `notifications`
+-- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
@@ -13700,38 +13715,38 @@ ALTER TABLE `orders`
   ADD KEY `orders_or_product_id_index` (`or_product_id`);
 
 --
--- Chỉ mục cho bảng `otps`
+-- Indexes for table `otps`
 --
 ALTER TABLE `otps`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD PRIMARY KEY (`email`);
 
 --
--- Chỉ mục cho bảng `password_reset_tokens`
+-- Indexes for table `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
--- Chỉ mục cho bảng `payments`
+-- Indexes for table `payments`
 --
 ALTER TABLE `payments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `permissions`
+-- Indexes for table `permissions`
 --
 ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
--- Chỉ mục cho bảng `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -13739,70 +13754,70 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Chỉ mục cho bảng `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `products_slug_unique` (`slug`);
 
 --
--- Chỉ mục cho bảng `products_images`
+-- Indexes for table `products_images`
 --
 ALTER TABLE `products_images`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `profile`
+-- Indexes for table `profile`
 --
 ALTER TABLE `profile`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `provinces`
+-- Indexes for table `provinces`
 --
 ALTER TABLE `provinces`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `recharge`
+-- Indexes for table `recharge`
 --
 ALTER TABLE `recharge`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
 
 --
--- Chỉ mục cho bảng `role_has_permissions`
+-- Indexes for table `role_has_permissions`
 --
 ALTER TABLE `role_has_permissions`
   ADD PRIMARY KEY (`permission_id`,`role_id`),
   ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
--- Chỉ mục cho bảng `shopping_cart`
+-- Indexes for table `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
   ADD PRIMARY KEY (`identifier`,`instance`);
 
 --
--- Chỉ mục cho bảng `slides`
+-- Indexes for table `slides`
 --
 ALTER TABLE `slides`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `tbl_statistical`
+-- Indexes for table `tbl_statistical`
 --
 ALTER TABLE `tbl_statistical`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `transactions`
+-- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`),
@@ -13810,210 +13825,210 @@ ALTER TABLE `transactions`
   ADD KEY `transactions_tr_status_index` (`tr_status`);
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- Chỉ mục cho bảng `user_has_types`
+-- Indexes for table `user_has_types`
 --
 ALTER TABLE `user_has_types`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `user_types`
+-- Indexes for table `user_types`
 --
 ALTER TABLE `user_types`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `user_types_name_unique` (`name`);
 
 --
--- Chỉ mục cho bảng `wards`
+-- Indexes for table `wards`
 --
 ALTER TABLE `wards`
   ADD PRIMARY KEY (`id`),
   ADD KEY `_province_id` (`province_id`,`district_id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `articles`
+-- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT cho bảng `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT cho bảng `districts`
+-- AUTO_INCREMENT for table `districts`
 --
 ALTER TABLE `districts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=710;
 
 --
--- AUTO_INCREMENT cho bảng `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `jobs`
+-- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
--- AUTO_INCREMENT cho bảng `menus`
+-- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
--- AUTO_INCREMENT cho bảng `notifications`
+-- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
--- AUTO_INCREMENT cho bảng `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
--- AUTO_INCREMENT cho bảng `otps`
+-- AUTO_INCREMENT for table `otps`
 --
 ALTER TABLE `otps`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `payments`
+-- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT cho bảng `permissions`
+-- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT cho bảng `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
 
 --
--- AUTO_INCREMENT cho bảng `products_images`
+-- AUTO_INCREMENT for table `products_images`
 --
 ALTER TABLE `products_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 
 --
--- AUTO_INCREMENT cho bảng `profile`
+-- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT cho bảng `provinces`
+-- AUTO_INCREMENT for table `provinces`
 --
 ALTER TABLE `provinces`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
--- AUTO_INCREMENT cho bảng `recharge`
+-- AUTO_INCREMENT for table `recharge`
 --
 ALTER TABLE `recharge`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT cho bảng `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `slides`
+-- AUTO_INCREMENT for table `slides`
 --
 ALTER TABLE `slides`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_statistical`
+-- AUTO_INCREMENT for table `tbl_statistical`
 --
 ALTER TABLE `tbl_statistical`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
--- AUTO_INCREMENT cho bảng `transactions`
+-- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
--- AUTO_INCREMENT cho bảng `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
--- AUTO_INCREMENT cho bảng `user_has_types`
+-- AUTO_INCREMENT for table `user_has_types`
 --
 ALTER TABLE `user_has_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
--- AUTO_INCREMENT cho bảng `user_types`
+-- AUTO_INCREMENT for table `user_types`
 --
 ALTER TABLE `user_types`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `wards`
+-- AUTO_INCREMENT for table `wards`
 --
 ALTER TABLE `wards`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11284;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `model_has_permissions`
+-- Constraints for table `model_has_permissions`
 --
 ALTER TABLE `model_has_permissions`
   ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `model_has_roles`
+-- Constraints for table `model_has_roles`
 --
 ALTER TABLE `model_has_roles`
   ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `role_has_permissions`
+-- Constraints for table `role_has_permissions`
 --
 ALTER TABLE `role_has_permissions`
   ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
@@ -14023,3 +14038,8 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+

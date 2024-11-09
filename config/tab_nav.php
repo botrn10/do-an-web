@@ -19,10 +19,7 @@ return [
                     'name' => 'Đổi mật khẩu',
                     'route' => 'get_admin.profile.update_password'
                 ],
-                [
-                    'name' => 'Đổi email',
-                    'route' => 'get_admin.profile.update_email'
-                ]
+              
             ]
         ]
     ]

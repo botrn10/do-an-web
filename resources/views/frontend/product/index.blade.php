@@ -67,14 +67,13 @@
                                 @if (!$isOwner)
                                     @if ($check == 0)
                                         <a href="{{ route('get.addProduct', $productDetail->id) }}" style="color: #007bff">
-                                            <i class="fa-sharp fa-regular fa-heart"></i>
-                                            <span style="font-size: 12px;">Yêu thích</span>
-                                        </a>
+                                        <i class="fa-solid fa-shopping-cart"></i>                                            <span style="font-size: 12px; background-color: #FFD700; padding: 8px 12px; border-radius: 5px; color: #333333; font-weight: bold;">Giỏ hàng</span>
+                                            </a>
                                     @else
                                         <a href="{{ route('get.deleteFavourite', $key) }}" style="color: #007bff">
-                                            <i class="fa-solid fa-heart"></i>
-                                            <span style="font-size: 12px;">Hủy yêu thích</span>
-                                        </a>
+                                            <i class="fa-solid fa-shopping-cart"></i>
+                                            <span style="font-size: 12px; background-color: red; padding: 5px; border-radius: 3px; color: white; font-weight: bold;">Hủy Giỏ hàng</span>
+                                            </a>
                                     @endif
                                 @endif
                             </div>
@@ -119,7 +118,7 @@
 
                                     <div>
                                         <span class="product-info-user-main-icon"><i class="fa-solid fa-shop"></i></span>
-                                        <span>Trường CNTT - CTU</span>
+                                        <span>Đại học Kinh tế TP. HCM</span>
                                     </div>
                                     {{-- <div>
                                         <span class="product-info-user-main-icon" style="font-size: 8px;"><i
@@ -205,13 +204,7 @@
                                             </div>
                                             <span>Số để gọi</span>
                                         </a>
-                                        <a target="_blank" href="{{ route('user_id_to_chat', $productDetail->user->id) }}"
-                                            class="button-chat d-flex">
-                                            <div>
-                                                <span><i class="fa-brands fa-rocketchat"></i></span>
-                                            </div>
-                                            <span>Chat với người bán</span>
-                                        </a>
+
                                     </div>
                                 @endif
                             @else
@@ -224,12 +217,7 @@
                                         </div>
                                         <span>Số để gọi</span>
                                     </a>
-                                    <a href="{{ route('get.login') }}" class="button-chat d-flex">
-                                        <div>
-                                            <span><i class="fa-brands fa-rocketchat"></i></span>
-                                        </div>
-                                        <span>Chat với người bán</span>
-                                    </a>
+                               
                                 </div>
                             @endif
                         </div>

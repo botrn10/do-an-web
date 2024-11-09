@@ -4,7 +4,7 @@
         <div class="row mt-3" style="background-color: white;">
             <div class="col-lg-12 mt-2">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Danh sách sản phẩm yêu thích</h2>
+                    <h2>Danh sách sản phẩm Giỏ hàng</h2>
                     <a href="/" class="btn btn-primary">Trở về</a>
                 </div>
                 <div class="table-responsive">

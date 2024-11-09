@@ -64,7 +64,7 @@
             &nbsp;
         </p>
         <footer class="footer">
-            <p>&copy; Stu2hand</p>
+            <p>&copy; Website</p>
         </footer>
     </div>
 </body>

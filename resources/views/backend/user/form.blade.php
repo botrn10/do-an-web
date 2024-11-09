@@ -41,18 +41,7 @@
                 @endforeach
             </div> --}}
 
-            <div class="row">
-                @foreach($roles ?? [] as $item)
-                    <div class="form-group form-check col-sm-3">
-                        <div class="form-group form-check">
-                            <label class="form-check-label" style="display: flex;justify-content: space-between" for="exampleCheck1">
-                                <span>{{ $item->description }}</span>
-                                <input type="checkbox" class="form-check-input" {{ in_array($item->id,$roleActive) ? "checked" : "" }}   value="{{ $item->id }}" name="roles[]">
-                            </label>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+         
 
             <button type="submit" class="btn btn-primary">Lưu dữ liệu</button>
         </div>

@@ -79,9 +79,7 @@
                                 <div class="product-more-option">
                                     <ul class="mb-0" style="list-style: none;padding-left: 0px;">
                                         <li>
-                                            <a href="#" class="d-flex align-items-center p-2 text-decoration-none">
-                                                <p><i class="fa-regular fa-eye"></i> - Xem chi tiết</p>
-                                            </a>
+                                           
                                         </li>
                                         <li>
                                             <a href="{{ route('get_admin.user.update', $item->id) }}"

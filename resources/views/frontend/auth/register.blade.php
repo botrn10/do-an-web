@@ -64,7 +64,6 @@
                             </div>
                             <div class="form-group">
                                 <p>Bạn đã có tài khoản? đăng nhập <a href="{{ route('get.login') }}">tại đây</a></p>
-                                <p>Quên mật khẩu? cấp lại <a href="{{ route('get.restart_password') }}">tại đây</a></p>
                                 <button type="submit" class="btn btn-primary">Đăng ký</button>
                             </div>
                         </div>

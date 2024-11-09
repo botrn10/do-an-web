@@ -1,29 +1,36 @@
 @extends('frontend.layouts.app_frontend')
 @section('title_page', 'Trang chủ')
 @section('content')
-    <div class="content1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="slider owl-carousel owl-theme">
-                        @foreach ($slides as $item)
-                            <div class="slider-img mb-3">
-                                <a href="{{ $item->link }}" target="_blank">
-                                    <img src="{{ pare_url_file($item->avatar) }}" alt="{{ $item->name }}" width="100%">
-                                </a>
-                            </div>
-                        @endforeach
+<div class="content1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="slider owl-carousel owl-theme">
+                    {{-- Slide 1 --}}
+                    <div class="slider-img mb-3">
+                        <a href="#" target="_blank">
+                            <img src="{{ asset('uploads/2023/08/27/ueh-1.jpg') }}" alt="Ảnh 1" width="100%">
+                        </a>
+                    </div>
+                    {{-- Slide 2 --}}
+                    <div class="slider-img mb-3">
+                        <a href="#" target="_blank">
+                            <img src="{{ asset('uploads/2023/08/27/ueh-2.jpg') }}" alt="Ảnh 2" width="100%">
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
     <div class="content2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="category">
-                        <h3 class="title">Khám phá danh mục </h3>
+                        <h3 class="title">Danh mục sản phẩm</h3>
                         <ul class="list-category owl-carousel position-relative">
                             @foreach ($categories->chunk(1) ?? [] as $category)
                                 <li class="col-category d-flex flex-column align-items-center">
@@ -49,7 +56,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h3 class="title">
-                        Đồ dùng dành cho bạn
+                        Có thể bạn thích
                     </h3>
                 </div>
             </div>
@@ -115,12 +122,12 @@
             encrypted: true
         });
 
-        // console.log("Tới đây nè");
+        // console.log("");
 
         var channel = pusher.subscribe('my-channel');
 
         channel.bind('my-event', function(data) {
-            // alert("Hí ae");
+            // alert("");
             $.ajax({
                 type: 'GET',
                 url: '/updateunseenmessage',

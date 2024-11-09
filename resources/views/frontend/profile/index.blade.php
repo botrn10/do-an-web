@@ -69,13 +69,7 @@
                                         </div>
                                         <span>Số để gọi</span>
                                     </a>
-                                    <a target="_blank" href="{{ route('user_id_to_chat', $item->user->id) }}"
-                                        class="button-chat d-flex">
-                                        <div>
-                                            <span><i class="fa-brands fa-rocketchat"></i></span>
-                                        </div>
-                                        <span>Chat với người bán</span>
-                                    </a>
+                                  
                                 </div>
                             </div>
                         @break
